@@ -23,7 +23,7 @@ body{
     padding-top: 6rem;
     display: inline-block;
     font-size: 3.5rem;
-    color: #002e5f;
+    color: #1C1C28;
     position: relative;
     letter-spacing: .2rem;
 }
@@ -33,14 +33,43 @@ body{
     position: absolute;
     height: 2.5rem;
     width: 2.5rem;
-    border-top: .4rem solid #002e5f;
+    border-top: .4rem solid #1C1C28;
     border-left: .4rem solid #002e5f;
 }
 
-.faq .heading::before, .faq .heading::after{
-    border-top: .4rem solid #00bfff;
-    border-left: .4rem solid #00bfff;
+
+
+.login-btn {
+  padding: 1.5rem 3rem !important;    /* Makes button tall and wide */
+  font-size: 2.3rem !important;       /* Extra large text */
+  border-radius: 5rem !important;   /* Super rounded */
+  font-weight: bold !important;
+  margin-left: 2rem !important;
+  box-shadow: 0 2px 10px 0 rgba(255,200,20,0.22) !important;
+  line-height: 1.2 !important;
+  height: auto !important;
+  min-width: 150px !important;        /* Force min size */
+  min-height: 60px !important;
+  display: inline-block !important;
+  vertical-align: middle !important;
 }
+
+.btn-yellow {
+  background-color: #FFC107 !important;
+  color: #161229 !important;
+  border: none !important;
+  font-weight: inherit !important;
+  border-radius: 5rem !important;
+}
+
+.btn-yellow:hover, .btn-yellow:focus {
+  background-color: #fff958 !important;
+  color: #fff !important;
+  box-shadow: 0 4px 18px 0 rgba(255,193,7,0.3) !important;
+}
+
+
+
 
 .heading::before, .clients .section-header h2::before, .section-head h1::before, .testimonials .section-header h2::before, .section-head-1 h4::before{
     top: 5.8rem;
@@ -99,21 +128,25 @@ body{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    min-height: 100px;
     width: 100%;
-    padding: 1rem 2rem;
+    padding: 2rem 2rem;
     position: fixed;
     top: 0;
     left: 0;
     z-index: 100;
     position: fixed;
+    
 }
 
-.header .logo img{
-    width: 130%;
-    height: 3rem;
-    top: 0;
-    left: 0;
+.header .logo img {
+    height: 7rem;
+    width: auto;
+    max-width: 200px;
+    display: block;
+    object-fit: contain;
 }
+
 
 .header .navbar ul{
     list-style-type: none;
@@ -234,8 +267,9 @@ body{
 
 .about .row .content p{
     font-size: 2rem;
-    color: #333;
+    color: #1f2139;
     padding: 1rem 0;
+    text-transform: none;
 }
 .pt-5 .container .row .section-head p{
     font-size: 2rem;
@@ -320,39 +354,14 @@ body{
     color:#52ab98;
   }
   .item p{
-    font-size: 15px;
+    font-size: 18px;
     line-height: 26px;
   }
   .item h6{
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     color:#2f2f2f;
   }   
 
-.counters {
-	background-image: url(../images/img2.jpg);
-    background-size: cover;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-	color: #fff;
-	padding: 40px 20px;
-}
-
-.counters .container {
-	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	grid-gap: 30px;
-	text-align: center;
-}
-
-.counters i {
-	color: #fff;
-	margin-bottom: 5px;
-}
-
-.counters .counter {
-	font-size: 45px;
-	margin: 10px 0;
-}
 
 @media (max-width: 700px) {
 	.counters .container {
@@ -377,22 +386,28 @@ body{
     font-size: 20px;
     line-height: 28px;
     text-align: center;
+    text-transform: none;
   }
   .item{
     background:#fff;
-    text-align: center;
+    text-align: center; 
     padding:30px 25px;
     box-shadow: 0 0 25px rgba(0,0,0,0.07);
-    border-radius: 20px;
+    border-radius: 30px;
     margin-bottom: 30px;
     border: 1px solid rgba(0,0,0,0.07);
     -webkit-transition:all 0.7s ease 0s;
     transition:all 0.7 ease 0s;
-    
+      display: flex;
+  flex-direction: column;
+  justify-content: center;
+   align-items: center;
+  transition: all 0.7s ease 0s;
+
   }
   .item:hover{
-    background-image: linear-gradient(to bottom right, #66ffcc 0%, #ffccff 100%);
-    background-position: right;
+    background-image: linear-gradient(to bottom right, #53a3ff 0%, #0a0c2b 100%);
+    background-position: cover;
     transition: background-position 3s;
     box-shadow: 0 1px 1px 0 rgba(0,0,0,0.2);
     -webkit-transition:all 0.5s ease 0s;
@@ -407,13 +422,16 @@ body{
   }
   .item:hover h6,
   .item:hover p{
-    color:#2b6777;
+    color:#ffffff;
     -webkit-transition:all 0.5s ease 0s;
     transition:all 0.5s ease 0s;
   }
   .item .icon{
+      display: flex;
+  align-items: center;
+  justify-content: center;
     font-size:40px;
-    margin-bottom: 25px;
+    margin: 0 auto 25px auto;
     color:yellow;
     width:90px;
     height:90px;
@@ -447,14 +465,17 @@ body{
     color:#52ab98;
   }
   .item p{
-    font-size: 15px;
-    font-family: "Varela Round",Arial,"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
     line-height: 26px;
+    text-transform: none;
+    text-align: center;
   }
   .item h6{
     margin-bottom: 20px;
-    font-family: "Varela Round",Arial,"Helvetica Neue",Helvetica,sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     color:#2f2f2f;
+    font-weight: bolder;
   }
 
 .communicate{
@@ -844,7 +865,7 @@ body{
         .footer {
             position: relative;
             padding: 0 0 30px 0;
-            background: #333;
+            background: #0f0729;
         }
         
         .footer .footer-top {
@@ -985,7 +1006,7 @@ body{
         .back-to-top {
             position: fixed;
             display: none;
-            background-color: #00bfff;
+            background-color: #0400ff;
             color: #ffffff;
             width: 45px;
             height: 45px;
@@ -1005,79 +1026,7 @@ body{
         .back-to-top i:hover {
             color: black;
         }
-
-        .faq{
-            min-height: 70vh;
-            width: 100vw;
-            text-align: center;
-            padding: 0 2rem;
-            background: url(../images/faq.jpg);
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-        
-        .faq .row{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0 2rem;
-        }
-        
-        .faq .row .accordion-container{
-            width: 50%;
-            text-align: left;
-        }
-
-        .faq .row .accordion{
-            margin-left: 1rem;
-            margin-right: 2rem;
-        }
-        
-        .faq .row .accordion-container .accordion .accordion-header{
-            background-color: #00bfff;
-            margin: 1rem 0;
-            box-shadow: .1rem .1rem .3rem rgba(0,0,0,.3);
-            cursor: pointer;
-            margin-left: 1rem;
-            margin-right: 2rem;
-        }
-        
-        .faq .row .accordion-container .accordion .accordion-header span{
-            display: inline-block;
-            text-align: center;
-            height: 4rem;
-            width: 5rem;
-            line-height: 4rem;
-            font-size: 2rem;
-            background: #333;
-            color: #fff;
-            clip-path: polygon(0% 0%,75% 0%,100% 50%,75% 100%,0% 100%); 
-        }
-        
-        .faq .row .accordion-container .accordion .accordion-header h3{
-            display: inline;
-            color: #333;
-            font-weight: 400;
-            padding-left: .5rem;
-            font-size: 1.5rem;
-        }
-        
-        .faq .row .accordion-container .accordion .accordion-body{
-            padding: 1rem;
-            color: #444;
-            box-shadow: .1rem .1rem .3rem rgba(0,0,0,.3);
-            background-color: #fff;
-            font-size: 1.3rem;
-            display: none;
-            margin-left: 1rem;
-            margin-right: 2rem;
-        }
-        
-@media (max-width: 1200px){
-    .faq{
-        min-height: 70vh;
-    }
-}        
+ 
 
 @media (max-width: 1000px){
     html{
@@ -1181,20 +1130,6 @@ body{
         padding: 1rem 0;
     } 
 
-    .clients {
-        position: relative;
-        padding: 90px 0;
-        text-align: center;
-        margin-top: -15rem;
-        margin-bottom: -8rem;
-    }
-
-    .clients .section-header p {
-        padding-bottom: 10px;
-        margin-top: 2.5rem;
-        text-align: center;
-        font-size: 2rem;
-    }
 
     .team{
         min-height: auto;
@@ -1342,17 +1277,4 @@ body{
             font-size: 30px;
         }
 
-        .faq{
-            padding: 0;
-            min-height: 60vh;
-        }
-    
-        .faq .row{
-            padding: 0 1.5rem;
-            flex-flow: column;
-        }
-    
-        .faq .row .accordion-container{
-            width: 100%;
-        }
 }
