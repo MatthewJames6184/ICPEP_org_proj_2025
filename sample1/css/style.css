@@ -18,12 +18,99 @@ body{
     overflow-x: hidden;
 }
 
+section {
+    background-color: #ffffff; 
+    padding: 2rem 0;
+    z-index: 0;
+}
+
+
+
+
+.home-page {
+    background-color: #0e0837;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    overflow: hidden !important;
+    position: relative;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    position: relative;
+    z-index: 1;
+}
+
+.content .quote {
+    color: white;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 64px;
+    padding: 10px;
+    background-color: #101010;
+    border-radius: 10px;
+}
+
+.content .by {
+    color: #00e1ff;
+}
+
+.blob-outer-container {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    inset: 0;
+    margin: auto;
+    filter: blur(100px);
+    /*opacity: 0.5;*/
+}
+
+.blob-inner-container {
+    border-radius: 99999px;
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 100vw;
+    height: 100vh;
+    min-width: 1000px;
+    overflow: hidden;
+    background-color: #fff;
+    transform: scale(0.8);
+}
+
+.blob {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    inset: 0;
+    margin: auto;
+    background: conic-gradient(from 0deg, #08f, rgb(16, 33, 74), #26f1ff, #4c00ff, #3e0d87, #09f);
+    animation: spinBlob 8s linear infinite;
+}
+
+@keyframes spinBlob {
+    0% {
+        transform: rotate(0deg) scale(2);
+    }
+
+    100% {
+        transform: rotate(1turn) scale(2);
+    }
+}
+
+
+
+
 .heading, .clients .section-header h2, .section-head h1, .testimonials .section-header h2, .section-head-1 h4{
-    margin: 2rem;
+    margin: 0;
     padding-top: 6rem;
     display: inline-block;
     font-size: 3.5rem;
-    color: #1C1C28;
+    color: #11112b;
     position: relative;
     letter-spacing: .2rem;
 }
@@ -37,19 +124,29 @@ body{
     border-left: .4rem solid #002e5f;
 }
 
+.header-animation {
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.header-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
 
 
 .login-btn {
-  padding: 1.5rem 3rem !important;    /* Makes button tall and wide */
-  font-size: 2.3rem !important;       /* Extra large text */
-  border-radius: 5rem !important;   /* Super rounded */
+  padding: 1.5rem 3rem !important;    
+  font-size: 2.3rem !important;       
+  border-radius: 5rem !important;  
   font-weight: bold !important;
   margin-left: 2rem !important;
   box-shadow: 0 2px 10px 0 rgba(255,200,20,0.22) !important;
   line-height: 1.2 !important;
   height: auto !important;
-  min-width: 150px !important;        /* Force min size */
-  min-height: 60px !important;
+  min-width: 120px !important;      
+  min-height: 20px !important;
   display: inline-block !important;
   vertical-align: middle !important;
 }
@@ -67,8 +164,6 @@ body{
   color: #fff !important;
   box-shadow: 0 4px 18px 0 rgba(255,193,7,0.3) !important;
 }
-
-
 
 
 .heading::before, .clients .section-header h2::before, .section-head h1::before, .testimonials .section-header h2::before, .section-head-1 h4::before{
@@ -130,7 +225,7 @@ body{
     justify-content: space-between;
     min-height: 100px;
     width: 100%;
-    padding: 2rem 2rem;
+    padding: 1rem 1.5rem;
     position: fixed;
     top: 0;
     left: 0;
@@ -146,7 +241,6 @@ body{
     display: block;
     object-fit: contain;
 }
-
 
 .header .navbar ul{
     list-style-type: none;
@@ -183,7 +277,7 @@ body{
 .home{
     min-height: 100vh;
     width: 100vw;
-    background-image: url(../images/blue.jpg);
+    
     background-size: cover;
     display: flex;
     align-items: center;
@@ -191,7 +285,7 @@ body{
     flex-flow: column;
     text-align: center;
     padding: 0 1rem;
-    position: relative;
+    position: relative !important;
     overflow: hidden !important;
 }
 
@@ -225,6 +319,38 @@ body{
 }
 
 .home .wave3{
+    animation-duration: 4s;
+    opacity: .5;
+}
+
+@keyframes waves{
+    0%{
+        background-position-x: 0;
+    }
+    100%{
+        background-position-x: 100rem;
+    }
+}
+
+.team .wave{
+    position: absolute;
+    bottom: -.5rem;
+    left: 0;
+    height: 11rem;
+    width: 100%;
+    background: url(../images/wave.png);
+    background-size: 100rem 11rem;
+    animation: waves 8s linear infinite;
+    background-repeat: repeat-x;
+}
+
+.team .wave2{
+    animation-direction: reverse;
+    animation-duration: 6s;
+    opacity: .3;
+}
+
+.team .wave3{
     animation-duration: 4s;
     opacity: .5;
 }
@@ -499,131 +625,16 @@ body{
     font-size: 2rem;
 }
 
-.testimonials {
-    position: relative;
-    padding: 90px 0 60px 0;
-    background: #f2f2f2;
-}
-
-.testimonials .testimonial-item {
-    position: relative;
-    margin: 0 15px 30px 15px;
-    background: #ffffff;
-}
-
-.testimonials .testimonial-img {
-    position: relative;
-    background: #000000;
-    overflow: hidden;
-}
-
-.testimonials .testimonial-text {
-    position: relative;
-    width: 100%;
-    padding: 30px 15px;
-    text-align: center;
-    background: #ffffff;
-}
-
-.testimonials .testimonial-text h3 {
-    font-size: 18px;
-    font-weight: 700;
-    margin-bottom: 10px;
-}
-
-.testimonials .testimonial-text h4 {
-    font-size: 12px;
-    font-weight: 300;
-    text-transform: uppercase;
-}
-
-.testimonials .testimonial-text p {
-    margin: 0;
-    font-size: 16px;
-    font-weight: 300;
-}
-
-.testimonials .owl-nav,
-.testimonials .owl-dots {
-    margin-top: 5px;
-    text-align: center;
-}
-
-.testimonials .owl-dot {
-    display: inline-block;
-    margin: 0 5px;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background-color: #dddddd;
-}
-
-.testimonials .owl-dot.active {
-    background-color: #4F84C4;
-}
-
-@media (max-width: 575px) {
-    .testimonials .testimonial-text {
-        padding: 25px;
-    }
-}
-
-.clients {
-    position: relative;
-    padding: 90px 0;
-    text-align: center;
-    margin-top: -10rem;
-    margin-bottom: -10rem;
-}
-
-.clients .section-header p {
-    padding-bottom: 10px;
-    margin-top: 2.5rem;
-    text-align: center;
-    font-size: 2rem;
-    color: #333;
-    padding: 1rem 0;
-}
-
-.clients img {
-    max-width: 100%;
-    opacity: 1;
-    transition: 0.3s;
-    padding: 15px 0;
-}
-
-.clients img:hover {
-    opacity: .5;
-}
-
-.clients .owl-nav,
-.clients .owl-dots {
-    margin-top: 5px;
-    text-align: center;
-}
-
-.clients .owl-dot {
-    display: inline-block;
-    margin: 0 5px;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background-color: #ddd;
-}
-
-.clients .owl-dot.active {
-    background-color: #4F84C4;
-}    
 
 .team{
     min-width: 100vw;
     min-height: 95vh;
     text-align: center;
-    background-color: #222;
+    background-color: #002e5f;
 }
 
 .team .heading{
-    color: #00bfff;
+    color: #48d1ff;
 }
 
 .team .heading::before, .team .heading::after{

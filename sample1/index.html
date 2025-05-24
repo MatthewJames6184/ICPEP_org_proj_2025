@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ICPEP.SE BulSU</title>
+    <title>LycanCore</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -22,28 +22,36 @@
 </head>
 <body>
     <header class="header">
-        <a href="#" class="logo"><img src="./images/icpep.png" alt=""></a>
+        <a href="#" class="logo"><img src="./images/icpep.png" alt="" id="logo" style="width: 100%; max-width: 150px; height: auto; margin-top: -2rem;"></a>
         <div class="fas fa-bars"></div>
         <nav class="navbar">
             <ul>
                 <li><a href="#home">home</a></li>
                 <li><a href="#service">Info</a></li>
                 <li><a href="#portfolio">Objectives</a></li>
-                <li><a href="#team">team</a></li>
                 <li><a href="#contact">contact</a></li>
                 <li><a href="#about">about</a></li>
+                <li><a href="#team">Developers</a></li>
                 <a href="login.html" class="btn btn-yellow btn-lg login-btn">Login</a>
 
             </ul>
         </nav>
     </header>
 
-  <section id="home" class="home">
+
+
+  <section id="home" class="home content home-page">
+     <div class="blob-outer-container">
+    <div class="blob-inner-container">
+     <div class="blob"></div>
+</div>
+</div>
       <h1>Code. Create. Conquer</h1>
       <h2><br>Empowering the Computer Engineering Students <br>of Bulacan State University Main Campus</h2>
     <div class="wave wave1"></div>
     <div class="wave wave2"></div>
     <div class="wave wave3"></div>
+
   </section>
 <br><br>
 
@@ -51,15 +59,15 @@
     <div class="container">
       <div class="row">
         <div class="section-head col-sm-12" id="service">
-            <img src="images/logo.png" alt="" style="width: 200px; max-width: 100%; height: auto; margin-top:5rem;"/>
+            <img src="images/logo.png" alt="" id="logo" style="width: 200px; max-width: 100%; height: auto; margin-top:5rem;"/>
             <br>
           <h1 style="margin-top: -4rem;">What is ICPEP.SE?</h1>
           <p>ICpEP.SE - BulSU empowers future computer engineers by bridging the academy and industry, <br>fostering excellence, unity, and global readiness.
             </p>
         </div>
         <div class="row justify-content-center d-flex align-items-stretch">
-            <div class="col-lg-6 col-sm-12">
-                <div class="item h-100"> <span class="icon feature_box_col_one"><i class="fa fa-laptop"></i></span>
+            <div class="col-lg-6 col-md-8 col-sm-12 mb-4 d-flex">
+                <div class="item h-100 text-center"> <span class="icon feature_box_col_one"><i class="fa fa-envelope"></i></span>
                     <h6>MISSION</h6>
                     <p>The Institute of Computer Engineers of the Philippines Student Edition - Bulacan State University (ICpEP.SE - BulSU) is 
                         committed in bridging the gap between the industry and the academe by empowering the interests, welfare, and ideals of 
@@ -67,8 +75,8 @@
                         officers and members for global competitiveness and national progression.</p>
                 </div>
                 </div>
-                <div class="col-lg-6 col-sm-12">
-                <div class="item h-100"> <span class="icon feature_box_col_two"><i class="fa fa-android"></i></span>
+                <div class="col-lg-6 col-md-8 col-sm-12 mb-4 d-flex">
+                <div class="item h-100 text-center"> <span class="icon feature_box_col_two"><i class="fa fa-eye"></i></span>
                     <h6>VISION</h6>
                     <p>The Institute of Computer Engineers of the Philippines Student Edition - Bulacan State University (ICpEP.SE - BulSU) 
                         envisions itself as the foundation of world class computer engineers and motivator of students’ interests towards 
@@ -87,7 +95,7 @@
     <div class="container">
       <div class="row g-5 align-items-stretch justify-content-center">
         <div class="section-head-1 col-sm-12" style="text-align: center;">
-          <h4 style="margin-top: 8rem;" id="portfolio"><span>Our</span> Objectives</h4>
+          <h4 style="margin-top: 3rem;" id="portfolio"><span>Our</span> Objectives</h4>
         </div>
         <div class="col-lg-4 col-sm-6 d-flex mb-4">
           <div class="item text-center"> <span class="icon feature_box_col_four"><i class="fa fa-database"></i></span>
@@ -113,14 +121,12 @@
         </div>
       </div>
 
-      <!-- Objective 5 -->
       <div class="col-lg-4 col-sm-6 d-flex mb-4">
         <div class="item text-center"> <span class="icon feature_box_col_two"><i class="fa fa-cogs"></i></span>
           <p>The establishment of common interest among Computer Engineering students towards attainment of a successful engineering profession.</p>
         </div>
       </div>
 
-      <!-- Objective 6 -->
       <div class="col-lg-4 col-sm-6 d-flex mb-4">
         <div class="item text-center"> <span class="icon feature_box_col_three"><i class="fa fa-globe"></i></span>
           <p>The development of good student-instructor relationship.</p>
@@ -129,7 +135,6 @@
 
       <div class="row justify-content-center">
 
-      <!-- Objective 7 -->
       <div class="col-lg-4 col-sm-6 d-flex mb-4">
         <div class="item text-center"> <span class="icon feature_box_col_four"><i class="fa fa-bolt"></i></span>
           <p>The encouragement of the Computer Engineering students to collaborate in fellowship and dedication of Science and Technology.</p>
@@ -143,7 +148,6 @@
         </div>
       </div>
       </div>
-
 
       </div>
     </div>
@@ -161,94 +165,20 @@
 <script src="lib/lightbox/js/lightbox.min.js"></script>
 
 
-<section class="team" style="margin-top: 7rem;">
-  <h1 class="heading" style="margin-top: -1.5rem;" id="team">our team</h1>
-  <p></p>
-  <div class="row">
-      <div class="card">
-          <div class="image">
-              <img src="./images/pexels-andrea-piacquadio-845434.jpg" alt="Team member 1">
-          </div>
-          <div class="info">
-              <h3>James Matthew Arias</h3>
-              <span>Web Developer</span>
-              <div class="icons">
-                  <a href="https://www.facebook.com/" class="fab fa-facebook-f"></a>
-                  <a href="https://twitter.com/login" class="fab fa-twitter"></a>
-                  <a href="https://www.instagram.com/" class="fab fa-instagram"></a>
-                  <a href="https://www.linkedin.com/" class="fab fa-linkedin"></a>
-              </div>
-          </div>
-      </div>
-  </div>
-  <div class="row">
-      <div class="card">
-          <div class="image">
-              <img src="./images/pexels-vinicius-wiesehofer-1130624.jpg" alt="Team member 1">
-          </div>
-          <div class="info">
-              <h3>Jozza Galang</h3>
-              <span>Mobile Developer</span>
-              <div class="icons">
-                  <a href="https://www.facebook.com/" class="fab fa-facebook-f"></a>
-                  <a href="https://twitter.com/login" class="fab fa-twitter"></a>
-                  <a href="https://www.instagram.com/" class="fab fa-instagram"></a>
-                  <a href="https://www.linkedin.com/" class="fab fa-linkedin"></a>
-              </div>
-          </div>
-      </div>
-  </div>
-  <div class="row">
-      <div class="card">
-          <div class="image">
-              <img src="./images/pexels-hussein-altameemi-2776353.jpg" alt="Team member 1">
-          </div>
-          <div class="info">
-              <h3>Ronalito Garzon</h3>
-              <span>Graphic Designer</span>
-              <div class="icons">
-                  <a href="https://www.facebook.com/" class="fab fa-facebook-f"></a>
-                  <a href="https://twitter.com/login" class="fab fa-twitter"></a>
-                  <a href="https://www.instagram.com/" class="fab fa-instagram"></a>
-                  <a href="https://www.linkedin.com/" class="fab fa-linkedin"></a>
-              </div>
-          </div>
-      </div>
-  </div>
-  <div class="row">
-      <div class="card">
-          <div class="image">
-              <img src="./images/pexels-andrea-piacquadio-745136.jpg" alt="Team member 1">
-          </div>
-          <div class="info">
-              <h3>Josef Alanrey F. Soriente</h3>
-              <span>Web Designer</span>
-              <div class="icons">
-                  <a href="https://www.facebook.com/" class="fab fa-facebook-f"></a>
-                  <a href="https://twitter.com/login" class="fab fa-twitter"></a>
-                  <a href="https://www.instagram.com/" class="fab fa-instagram"></a>
-                  <a href="https://www.linkedin.com/" class="fab fa-linkedin"></a>
-              </div>
-          </div>
-      </div>
-  </div>
-</section>
-
 
 <section id="about" class="about py-5">
   <div class="container">
-    <h1 class="heading text-center mb-1">about us</h1>
+    <h1 class="heading text-center mb-4">about us</h1>
     <div class="row justify-content-center">
       <div class="col-12 col-md-10 col-lg-8">
-        <div class="content text-center p-4">
-          <p>
+        <div class="content text-center p-3">
+          <p class="lead">
             The Institute of Computer Engineers of the Philippines Student Edition - Bulacan State University (ICpEP.SE - BulSU) is a 
             student organization dedicated to empowering future computer engineers through academic excellence, industry exposure, and 
             leadership development. By bridging the gap between the academe and the tech industry, the organization fosters unity, 
             innovation, and professionalism among its members, preparing them to become globally competitive and socially responsible 
             engineers.
           </p>
-          <a href="#"><button class="btn btn-primary mt-3">Home</button></a>
         </div>
       </div>
     </div>
@@ -257,7 +187,7 @@
 
 <section id="contact" class="contact">
     <h1 class="heading">Contact Us!</h1>
-<div class="contact-in mb-20" style="margin-bottom: 6rem;">
+<div class="contact-in mb-10" style="margin-bottom: 6rem;">
     <div class="contact-map">
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3856.4076822770207!2d120.8121396097215!3d14.858464870653505!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397af7324f0f857%3A0xc21f39ed5b256ece!2sBulacan%20State%20University!5e0!3m2!1sen!2sph!4v1747726669360!5m2!1sen!2sph" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
@@ -273,6 +203,79 @@
     </div>
 </section>
 
+
+<section class="team" style="margin-top: 6rem;">
+  <h1 class="heading" style="margin-top: -1.5rem;" id="team">The Developers</h1>
+  <p></p>
+  <div class="row">
+      <div class="card">
+          <div class="image">
+              <img src="./images/matthew.jpg" alt="Team member 1">
+          </div>
+          <div class="info">
+              <h3>James Matthew Arias</h3>
+              <span>Back-End Developer</span>
+              <div class="icons">
+                  <a href="https://www.facebook.com/james.arias.7161" target="_blank" class="fab fa-facebook-f"></a>
+                  <a href="https://www.instagram.com/" target="_blank" class="fab fa-instagram"></a>
+                  <a href="https://www.linkedin.com/" target="_blank" class="fab fa-linkedin"></a>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="row">
+      <div class="card">
+          <div class="image">
+              <img src="./images/tota.jpg" alt="Team member 1">
+          </div>
+          <div class="info">
+              <h3>Jozza Galang</h3>
+              <span>Front-End Developer</span>
+              <div class="icons">
+                  <a href="https://www.facebook.com/Jozza.Galang05" target="_blank" class="fab fa-facebook-f"></a>
+                  <a href="https://www.instagram.com/" target="_blank" class="fab fa-instagram"></a>
+                  <a href="https://www.linkedin.com/in/jozza-galang-20aa14247/" target="_blank" class="fab fa-linkedin"></a>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="row">
+      <div class="card">
+          <div class="image">
+              <img src="./images/ron.jpg" alt="Team member 1">
+          </div>
+          <div class="info">
+              <h3>Ronalito Garzon</h3>
+              <span>Back-End Developer</span>
+              <div class="icons">
+                  <a href="https://www.facebook.com/zephyzephyzeph" target="_blank" class="fab fa-facebook-f"></a>
+                  <a href="https://www.instagram.com/" target="_blank" class="fab fa-instagram"></a>
+                  <a href="https://www.linkedin.com/" target="_blank" class="fab fa-linkedin"></a>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="row">
+      <div class="card">
+          <div class="image">
+              <img src="./images/josef.jpg" alt="Team member 1">
+          </div>
+          <div class="info">
+              <h3>Josef Alanrey F. Soriente</h3>
+              <span>Front-End Developer</span>
+              <div class="icons">
+                  <a href="https://www.facebook.com/alanjosef.soriente" target="_blank" class="fab fa-facebook-f"></a>
+                  <a href="https://www.instagram.com/" target="_blank" class="fab fa-instagram"></a>
+                  <a href="https://www.linkedin.com/in/josef-alanrey-soriente/" target="_blank" class="fab fa-linkedin"></a>
+              </div>
+          </div>
+      </div>
+  </div>
+    <div class="wave wave1"></div>
+    <div class="wave wave2"></div>
+    <div class="wave wave3"></div>
+ 
+</section>
 
 
     <div class="footer">
@@ -306,9 +309,7 @@
                       </p>
 
                       <div class="social-links">
-                          <a href="https://www.facebook.com/ICpEP.SEBulSU2024"><i class="ion-logo-facebook"></i></a>
-                          <a href="https://www.linkedin.com/"><i class="ion-logo-linkedin"></i></a>
-                          <a href="https://www.instagram.com/"><i class="ion-logo-instagram"></i></a>
+                          <a href="https://www.facebook.com/ICpEP.SEBulSU2024" target="_blank"><i class="ion-logo-facebook"></i></a>
                       </div>
 
                   </div>
@@ -320,7 +321,7 @@
       <div class="container">
           <div class="row align-items-center">
               <div class="col-md-6 copyright" style="color: #fff; font-size: 1.3rem;">
-                  &copy; Copyright 2025 ICPEP.SE BulSU Main Campus. All Rights Reserved.
+                  &copy; Copyright 2025 LycanCore for ICPEP.SE BulSU Main Campus. All Rights Reserved.
               </div>
           </div>
       </div>
