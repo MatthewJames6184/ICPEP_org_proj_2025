@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Real-Time Circle Poll</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+    }
+
+    .container {
+      padding: 20px;
+    }
+
+    #content-area {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 400px;
+      margin: 60px auto;
+      text-align: center;
+    }
+
+    .circle {
+      position: relative;
+      width: 180px;
+      height: 180px;
+      margin: 20px auto;
+      border-radius: 50%;
+      background: conic-gradient(#004080 0deg, #ccc 0deg);
+    }
+
+    .circle-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 28px;
+      font-weight: bold;
+      color: #004080;
+    }
+
+    button {
+      background-color: #004080;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin: 5px;
+      font-size: 16px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0066cc;
+    }
+
+    p {
+      margin: 5px 0;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div id="content-area">
+      <h2>Do you like this poll?</h2>
+      <button onclick="vote('option1')">Yes</button>
+      <button onclick="vote('option2')">No</button>
+
+      <div class="circle" id="circle">
+        <div class="circle-text" id="circleText">0%</div>
+      </div>
+
+      <p>Yes: <span id="opt1Count">0</span></p>
+      <p>No: <span id="opt2Count">0</span></p>
+    </div>
+  </div>
+
+  <script>
+    async function fetchVotes() {
+      const response = await fetch('poll2.php');
+      return await response.json();
+    }
+
+    async function vote(option) {
+      await fetch('poll2.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: `option=${option}`
+      });
+      updatePoll();
+    }
+
+    async function updatePoll() {
+      const votes = await fetchVotes();
+      const total = votes.option1 + votes.option2 || 1;
+      const percent = Math.round((votes.option1 / total) * 100);
+      const degree = percent * 3.6;
+
+      document.getElementById('circle').style.background = 
+        `conic-gradient(#004080 0deg, #004080 ${degree}deg, #ccc ${degree}deg 360deg)`;
+
+      document.getElementById('circleText').textContent = `${percent}%`;
+      document.getElementById('opt1Count').textContent = votes.option1;
+      document.getElementById('opt2Count').textContent = votes.option2;
+    }
+
+    // Update every 3 seconds
+    setInterval(updatePoll, 3000);
+    updatePoll();
+  </script>
+
+</body>
+</html>

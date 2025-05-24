@@ -1,0 +1,96 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+.membership-container {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 500px;
+  margin: 40px auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #004080;
+  text-align: center;
+}
+
+label {
+  display: block;
+  margin: 12px 0 6px;
+  font-weight: bold;
+  color: #004080;
+}
+
+input[type="text"],
+input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.payment-link {
+  display: block;
+  margin: 14px 0;
+  color: #0066cc;
+  font-weight: bold;
+  text-decoration: underline;
+  text-align: center;
+}
+
+.upload-box {
+  background-color: #f9f9f9;
+  color: #333;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+  text-align: center;
+  border: 1px dashed #ccc;
+}
+
+.upload-box p {
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #555;
+}
+
+#fileUpload {
+  display: none;
+}
+
+.custom-upload-label {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #004080;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+.custom-upload-label:hover {
+  background-color: #0066cc;
+}
+
+.back-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  color: #004080;
+  font-size: 20px;
+  cursor: pointer;
+}

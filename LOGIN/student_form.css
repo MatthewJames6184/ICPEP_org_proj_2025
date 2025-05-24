@@ -1,0 +1,146 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  height: 100vh;
+  background: linear-gradient(135deg, #3649b1, #060c2e, #3649b1);
+  background-size: 400% 400%;
+  animation: moveBackground 15s ease infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes moveBackground {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.form-container {
+  background-color: white;
+  border-radius: 15px;
+  padding: 30px 25px;
+  width: 500px;
+  max-width: 95%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.form-container {
+  background-color: white;
+  border-radius: 15px;
+  padding: 30px 25px;
+  width: 600px; /* increased from 500px */
+  max-width: 95%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+
+/* Form elements */
+form input[type="text"],
+form input[type="date"],
+form select {
+  width: 100%;
+  padding: 12px 16px;
+  margin-bottom: 15px;
+  border: 2px solid #ccc;
+  border-radius: 25px;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  background-color: white;
+}
+
+form select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, #999 50%),
+    linear-gradient(135deg, #999 50%, transparent 50%),
+    linear-gradient(to right, #ccc, #ccc);
+  background-position:
+    calc(100% - 20px) center,
+    calc(100% - 15px) center,
+    calc(100% - 25px) center;
+  background-size: 5px 5px, 5px 5px, 1px 2em;
+  background-repeat: no-repeat;
+}
+
+form input:focus,
+form select:focus {
+  border-color: #3649b1;
+  box-shadow: 0 0 5px #3649b1;
+}
+
+/* Grouped row layout */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.row input,
+.row select {
+  flex: 1 1 33%;
+  min-width: 0;
+  padding: 12px 18px;
+  font-size: 16px;
+}
+
+
+
+/* Buttons */
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.submit-btn,
+.back-btn {
+  background-color: #f0b429;
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 25px;
+  font-size: 14px;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover,
+.back-btn:hover {
+  background-color: #d99a18;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+  .row {
+    flex-direction: column;
+  }
+
+  .row input,
+  .row select {
+    flex: 1 1 100%;
+  }
+
+  .buttons {
+    flex-direction: column;
+  }
+
+  .submit-btn,
+  .back-btn {
+    width: 100%;
+  }
+}
