@@ -18,13 +18,9 @@
 <body>
 
   <div class="container">
-    <!-- Left Side: Login Form -->
     <div class="form-container">
       <div class="profile-container">
-
       </div>
-
-
       <form action="process_login.php" method="POST">
         <img src="LOGO.png" alt="Logo" style="display:block; margin: 0 auto 15px auto; width: 80px; height: auto;" />
         <input
