@@ -197,12 +197,12 @@ try {
 }
 
 // Check if user is logged in
-if (!isset($_SESSION['user_email'])) {
+if (!isset($_SESSION['email'])) {
     header("Location: login.php");
     exit();
 }
 
-
+$userEmail = $_SESSION['email'];
 // Fetch user data
 $sql = "SELECT CONCAT(first_name, ' ', last_name) AS full_name, email, year_level, section, student_number
         FROM user_account 
