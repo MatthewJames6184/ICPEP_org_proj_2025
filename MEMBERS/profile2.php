@@ -17,15 +17,19 @@ try {
     die("Database connection failed: " . $e->getMessage());
 }
 
-
-$userEmail = $_SESSION['email'];
+$studentNumber = $_SESSION['user_studNo'] ?? null;
+if (!$studentNumber) {
+    die("You are not logged in.");
+}
 // Fetch user data
-$sql = "SELECT CONCAT(first_name, ' ', last_name) AS full_name, email, year_level, section
+
+$sql = "SELECT CONCAT(first_name, ' ', last_name) AS full_name, email, year_level, section, membership_status
         FROM user_account 
-        WHERE email = ?";
+        WHERE username = ?";
+
 
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("s", $userEmail);
+$stmt->bind_param("s", $studentNumber);
 $stmt->execute();
 $result = $stmt->get_result();
 
