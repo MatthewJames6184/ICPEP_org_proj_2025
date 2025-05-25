@@ -566,29 +566,29 @@ section {
   }
   .item .feature_box_col_one{
     background:rgba(247,198,5,0.2);
-    color:#52ab98;
+    color:#1f307c;
   }
   .item .feature_box_col_two{
-    background: rgba(255, 77, 28, 0.15);
-    color:#52ab98;
+    background: rgba(247,198,5,0.2);
+    color:#1f307c;
     
   }
   .item .feature_box_col_three{
-    background:rgba(0,147,38,0.15);
-    color:#52ab98;
+    background:rgba(247,198,5,0.2);
+    color:#1f307c;
   }
   .item .feature_box_col_four{
-    background:rgba(0,108,255,0.15);
-    color:#52ab98;
+    background:rgba(247,198,5,0.2);
+    color:#1f307c;
     
   }
   .item .feature_box_col_five{
-    background:rgba(146,39,255,0.15);
-    color:#52ab98;
+    background:rgba(247,198,5,0.2);
+    color:#1f307c;
   }
   .item .feature_box_col_six{
-    background:rgba(23,39,246,0.15);
-    color:#52ab98;
+    background:rgba(247,198,5,0.2);
+    color:#1f307c;
   }
   .item p{
     font-size: 18px;
