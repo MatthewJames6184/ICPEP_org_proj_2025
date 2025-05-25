@@ -21,9 +21,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // Redirect based on user_type
             if (isset($row['user_type']) && strtolower(trim($row['user_type'])) === 'admin') {
-                header("Location: admin_dashboard.php");
+                header("Location: /FOR ADMIN/pollDashboard2.php");
             } else {
-                header("Location: dashboard_dummy.php");
+                header("Location: /MEMBERS/pollDashboard2.php");
             }
             exit();
         } else {
