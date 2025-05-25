@@ -1,7 +1,19 @@
 <?php
 session_start(); // Always start the session
 
-include('conn.php');
+$db_server = "localhost";	
+$db_user   = "u495515480_ICPEP_dbs";			
+$db_pass   = "icpepElec_se#2025";			
+$db_name   = "u495515480_icpep_web_dbms";
+
+// Create connection
+try {
+    $conn = new mysqli($db_server, $db_user, $db_pass, $db_name);
+    $conn->set_charset("utf8mb4"); // Optional: sets charset for security and compatibility
+} catch (mysqli_sql_exception $e) {
+    // Custom error message (better than just "Connection Unsuccessful")
+    die("Database connection failed: " . $e->getMessage());
+}
 
 // Check if user is logged in
 if (!isset($_SESSION['user_email'])) {
@@ -205,11 +217,8 @@ if ($result && $result->num_rows > 0) {
 
   <div class="profile-container">
 
-
-
     <h2>User Profile</h2>
 
-    <!-- Profile Photo -->
     <img
       src="<?php echo !empty($profilePhoto) ? htmlspecialchars($profilePhoto) : 'sadwolf.jpg'; ?>"
       alt="Profile Photo"
