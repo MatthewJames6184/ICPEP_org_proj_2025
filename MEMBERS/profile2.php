@@ -226,21 +226,6 @@
 
     <hr />
 
-    <!-- Change Password -->
-    <form action="change_password.php" method="POST">
-      <h3>Change Password</h3>
-      <label for="currentPassword">Current Password</label>
-      <input type="password" id="currentPassword" name="currentPassword" required />
-
-      <label for="newPassword">New Password</label>
-      <input type="password" id="newPassword" name="newPassword" required />
-
-      <label for="confirmPassword">Confirm New Password</label>
-      <input type="password" id="confirmPassword" name="confirmPassword" required />
-
-      <input type="submit" value="Update Password" />
-    </form>
-
     <hr />
 
     <!-- Upload / Change Profile Photo -->
@@ -254,7 +239,7 @@
 
     <!-- Logout Button at the Bottom -->
     <div class="logout-bottom">
-      <form action="logout.php" method="POST">
+      <form action="/login-branch/logout.php" method="POST">
         <input type="submit" value="Logout" />
       </form>
     </div>

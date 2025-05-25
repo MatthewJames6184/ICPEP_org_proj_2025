@@ -25,10 +25,17 @@
 
 // Temporary static data as fallback if DB is not used
 $announcements = [
-    ["title" => "Reminder: Exam Week!", "content" => "Exams start next Monday. Please check your schedule and arrive early."],
-    ["title" => "School Fair This Friday", "content" => "Don’t miss the school fair! Booths, food, and games from 10am–4pm."],
-    ["title" => "Library Renovation", "content" => "The library will be closed for renovation until next month. Visit the digital library instead."]
-];
+    ["title" => "Reminder: OJT PAPERS!", "content" => "Internships are coming for 3rd Years! Get ready and do your best."],
+    ["title" => "FINALS WEEK DONE!", "content" => "Manifesting good grades for everyone! <3"],
+    ["title" => "World Champions", "content" => "𝗙𝗥𝗢𝗠 𝗕𝗨𝗟𝗦𝗨 𝗧𝗢 𝗧𝗛𝗘 𝗪𝗢𝗥𝗟𝗗, 𝗧𝗘𝗔𝗠 𝗭-𝗠𝗘𝗡 𝗛𝗔𝗩𝗘 𝗠𝗔𝗗𝗘 𝗛𝗜𝗦𝗧𝗢𝗥𝗬!🌍🏆
+After claiming 3rd Prize in the Asia Pacific Regionals in Kuala Lumpur, our very own BulSU Computer Engineering Delegates have soared to the top, bringing home the 𝗚𝗥𝗔𝗡𝗗 𝗣𝗥𝗜𝗭𝗘 at the 𝟵𝘁𝗵 𝗛𝘂𝗮𝘄𝗲𝗶 𝗜𝗖𝗧 𝗖𝗼𝗺𝗽𝗲𝘁𝗶𝘁𝗶𝗼𝗻 𝗚𝗹𝗼𝗯𝗮𝗹 𝗙𝗶𝗻𝗮𝗹 – 𝗜𝗻𝗻𝗼𝘃𝗮𝘁𝗶𝗼𝗻 𝗧𝗿𝗮𝗰𝗸, held on 𝗠𝗮𝘆 𝟮𝟰, 𝟮𝟬𝟮𝟱 in 𝗦𝗵𝗲𝗻𝘇𝗵𝗲𝗻, 𝗖𝗵𝗶𝗻𝗮! 
+Introducing your 𝗪𝗢𝗥𝗟𝗗 𝗖𝗛𝗔𝗠𝗣𝗜𝗢𝗡𝗦:
+🔹 Ian Kenneth Agustin
+🔹 Aaron Gabriel Ersando
+🔹 John Orrin Acuyong
+𝗖𝗼𝗮𝗰𝗵: Engr. Alberto C. Cruz Jr."],
+    ["title" => "CpE Night Done!", "content" => "Thank you to everyone who believed in the magic, dressed the part, and made memories that will live happily ever after in our hearts. Whether you danced under the lights or laughed with friends, your story became part of ours."]
+];  
 ?>
 
 <!DOCTYPE html>
@@ -47,7 +54,7 @@ $announcements = [
       max-width: 1000px;
     }
     .announcement {
-      background-color: white;
+      background-color:rgb(170, 212, 254);
       border-radius: 12px;
       padding: 20px;
       margin-bottom: 20px;
