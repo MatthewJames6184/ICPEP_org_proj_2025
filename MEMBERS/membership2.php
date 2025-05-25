@@ -28,7 +28,7 @@
                 <input type="file" id="fileUpload" name="fileUpload" accept=".pdf, .png, .jpg, .jpeg">
                 <label for="fileUpload" class="custom-upload-label">Choose File</label>
             </div>
-            <button type="submit">Submit</button>
+            <button type="submit" id="submit">Submit</button>
 
         </form>
     </div>
