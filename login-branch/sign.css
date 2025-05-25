@@ -1,0 +1,147 @@
+
+		/* ======= Reset & Base ======= */
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			font-family: Arial, sans-serif;
+		}
+
+		body {
+			height: 100vh;
+			background: linear-gradient(135deg, #3649b1, #060c2e, #3649b1);
+			background-size: 400% 400%;
+			animation: moveBackground 15s ease infinite;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+		}
+
+		@keyframes moveBackground {
+			0% { background-position: 0% 50%; }
+			50% { background-position: 100% 50%; }
+			100% { background-position: 0% 50%; }
+		}
+
+		/* ======= Form Container ======= */
+		form {
+			background-color: white;
+			border-radius: 15px;
+			padding: 30px 25px;
+			width: 600px;
+			max-width: 95%;
+			box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+		}
+
+		h2 {
+			margin-bottom: 20px;
+			text-align: center;
+			font-size: 26px;
+			color: #222;
+		}
+
+		.input-group {
+			margin-bottom: 15px;
+			text-align: left;
+		}
+
+		label {
+			display: block;
+			margin-bottom: 5px;
+			font-weight: bold;
+		}
+
+		input[type="text"],
+		input[type="password"],
+		input[type="email"],
+		input[type="date"],
+		select {
+			width: 100%;
+			padding: 12px 16px;
+			border: 2px solid #ccc;
+			border-radius: 25px;
+			font-size: 15px;
+			outline: none;
+			transition: border-color 0.3s ease, box-shadow 0.3s ease;
+			background-color: white;
+		}
+
+		input:focus,
+		select:focus {
+			border-color: #3649b1;
+			box-shadow: 0 0 5px #3649b1;
+		}
+
+		select {
+			appearance: none;
+			background-image:
+				linear-gradient(45deg, transparent 50%, #999 50%),
+				linear-gradient(135deg, #999 50%, transparent 50%),
+				linear-gradient(to right, #ccc, #ccc);
+			background-position:
+				calc(100% - 20px) center,
+				calc(100% - 15px) center,
+				calc(100% - 25px) center;
+			background-size: 5px 5px, 5px 5px, 1px 2em;
+			background-repeat: no-repeat;
+		}
+
+		.error {
+			color: red;
+			font-size: 13px;
+			margin-top: 3px;
+		}
+
+		.show-password {
+			display: flex;
+			align-items: center;
+			font-size: 14px;
+			color: #333;
+			cursor: pointer;
+			user-select: none;
+			gap: 8px;
+		}
+
+		.show-password input[type="checkbox"] {
+			width: 16px;
+			height: 16px;
+			accent-color: #3649b1;
+			cursor: pointer;
+		}
+
+		button {
+			background-color: #f0b429;
+			color: white;
+			border: none;
+			padding: 10px 25px;
+			border-radius: 25px;
+			font-size: 14px;
+			cursor: pointer;
+			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+			transition: background-color 0.3s ease;
+			margin: 5px;
+		}
+
+		button:hover {
+			background-color: #d99a18;
+		}
+
+		.hidden {
+			display: none;
+		}
+
+		.already-have-account {
+			margin-top: 15px;
+			text-align: center;
+		}
+
+		.already-have-account a {
+			font-size: 14px;
+			color: #1a73e8;
+			text-decoration: none;
+		}
+
+		.already-have-account a:hover {
+			text-decoration: underline;
+		}
