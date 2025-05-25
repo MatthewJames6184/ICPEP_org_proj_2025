@@ -5,7 +5,7 @@
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Register</title>
-	<link rel="stylesheet" href="style.css" />
+	<link rel="stylesheet" href="sign.css" />
 </head>
 
 <body>
@@ -13,21 +13,33 @@
 		<!-- Step 1 -->
 		<div id="step1">
 			<h2>Step 1: Account Info</h2>
+
 			<div class="input-group">
 				<label>Email:</label>
 				<input type="email" id="user_email" name="user_email" required />
 				<div class="error" id="emailError"></div>
 			</div>
+
 			<div class="input-group">
 				<label>Password:</label>
 				<input type="password" id="user_password" name="user_password" required />
 				<div class="error" id="passwordError"></div>
 			</div>
+
 			<div class="input-group">
 				<label>Confirm Password:</label>
 				<input type="password" id="user_confirmPassword" name="user_confirmPassword" required />
 				<div class="error" id="confirmPasswordError"></div>
 			</div>
+
+			<!-- Show password checkbox -->
+			<div class="input-group">
+				<label class="show-password">
+					<input type="checkbox" id="showPasswordToggle" onchange="togglePasswordVisibility()">
+					Show Password
+				</label>
+			</div>
+
 			<button type="button" id="nextBtn">Next</button>
 		</div>
 
@@ -42,11 +54,11 @@
 				<input type="text" name="user_lname" id="user_lname" placeholder="Last Name" required />
 				<div class="error" id="lnameError"></div>
 			</div>
-
 			<div class="input-group">
 				<input type="text" name="user_studNo" id="user_studNo" placeholder="Student Number" required />
 				<div class="error" id="studNoError"></div>
 			</div>
+
 			<div class="input-group">
 				<label for="user_yearLevel">Year Level:</label>
 				<select name="user_yearlevel" id="user_yearLevel" required>
@@ -57,6 +69,7 @@
 					<option value="4th Year">4th Year</option>
 				</select>
 			</div>
+
 			<div class="input-group">
 				<label for="user_section">Section:</label>
 				<select name="user_section" id="user_section" required>
@@ -67,17 +80,26 @@
 					<option value="CpE-3D">CpE-3D</option>
 				</select>
 			</div>
+
 			<button type="button" id="backBtn">Back</button>
-			<button type="submit">Submit</button>
+			<button type="submit" id="submitBtn">Submit</button>
 		</div>
 	</form>
 
 	<div class="already-have-account">
 		<a href="login.php" id="SignIn">Already have an account?</a>
-
 	</div>
 
 	<script src="register_validation.js"></script>
+	<script>
+		function togglePasswordVisibility() {
+			const password = document.getElementById("user_password");
+			const confirmPassword = document.getElementById("user_confirmPassword");
+			const type = password.type === "password" ? "text" : "password";
+			password.type = type;
+			confirmPassword.type = type;
+		}
+	</script>
 </body>
 
 </html>

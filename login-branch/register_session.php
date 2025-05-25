@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $_SESSION['user_section'] = $_POST['user_section'];
 
     // Redirect to OTP page
-    header("Location: ./mailing/otp.php");
+    header("Location: mailing/otp.php");
     exit();
 }
 ?>

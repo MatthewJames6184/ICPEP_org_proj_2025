@@ -1,4 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // Set input 'required' attributes initially
+  document.querySelectorAll('#step1 input').forEach(input => input.required = false);
+  document.querySelectorAll('#step2 input, #step2 select').forEach(input => input.required = true);
+
   const nextBtn = document.getElementById("nextBtn");
   const backBtn = document.getElementById("backBtn");
   const form = document.getElementById("registerForm");
@@ -8,7 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const emailError = document.getElementById("emailError");
   const fnameError = document.getElementById("fnameError");
   const lnameError = document.getElementById("lnameError");
-
 
   nextBtn.addEventListener("click", (e) => {
     const email = get("user_email").value.trim();
@@ -62,20 +65,17 @@ document.addEventListener("DOMContentLoaded", () => {
     fnameError.textContent = "";
     lnameError.textContent = "";
 
-
     const studentNo = get("user_studNo").value.trim();
     const firstName = get("user_fname").value.trim();
     const lastName = get("user_lname").value.trim();
 
     const errors = [];
 
-    reset(["user_studNo", "user_fname", "user_lname", "user_birthday"]);
+    reset(["user_studNo", "user_fname", "user_lname"]);
 
     const studNoValid = /^20\d{8}$/.test(studentNo);
     const firstNameValid = /^[A-Za-z]+([-' ][A-Za-z]+)*$/.test(firstName);
     const lastNameValid = /^[A-Za-z]+([-' ][A-Za-z]+)*$/.test(lastName);
-
-
 
     if (!studNoValid) {
       mark("user_studNo");

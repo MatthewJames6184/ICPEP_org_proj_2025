@@ -40,8 +40,8 @@ if ($otp == $_SESSION['otp']) {
     $stmt->close();
 
     // Insert new user
-    $stmt = $conn->prepare("INSERT INTO user_account (student_number, email, password, first_name, last_name, year_level, section) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("ssssssss", $studNo,  $email, $password, $firstName, $lastName, $yearLevel, $section);
+    $stmt = $conn->prepare("INSERT INTO user_account (student_number, email, password, first_name, last_name, year_level, section) VALUES (?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("sssssss", $studNo,  $email, $password, $firstName, $lastName, $yearLevel, $section);
     if ($stmt->execute()) {
         unset($_SESSION['otp'], $_SESSION['otp_expiry']);
         echo json_encode(['verified' => true]);
