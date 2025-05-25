@@ -29,7 +29,7 @@ if (!isset($_SESSION['email'])) {
 
 $userEmail = $_SESSION['email'];
 // Fetch user data
-$sql = "SELECT CONCAT(first_name, ' ', last_name) AS full_name, email, year_level, section, student_number
+$sql = "SELECT CONCAT(first_name, ' ', last_name) AS full_name, email, year_level, section
         FROM user_account 
         WHERE email = ?";
 
@@ -43,7 +43,6 @@ if ($result && $result->num_rows > 0) {
 
     $name = $userData['full_name'];
     $email = $userData['email'];
-    $snum = $userData['student_number'];
     $yearLevel = $userData['year_level'];
     $section = $userData['section'];
     $MembershipStatus = $userData['membership_status'];
@@ -245,7 +244,6 @@ if ($result && $result->num_rows > 0) {
 
     <div class="profile-info">
       <p><strong>Name:</strong> <?php echo htmlspecialchars($name ?? 'John Doe'); ?></p>
-      <p><strong>Student Number:</strong> <?php echo htmlspecialchars($snum ?? ''); ?></p>
       <p><strong>Email:</strong> <?php echo htmlspecialchars($email ?? 'jondoe@gmail.com'); ?></p>
       <p><strong>Year Level:</strong> <?php echo htmlspecialchars($yearLevel ?? '3rd Year'); ?></p>
       <p><strong>Section:</strong> <?php echo htmlspecialchars($section ?? 'A'); ?></p>
