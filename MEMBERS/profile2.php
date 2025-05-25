@@ -1,3 +1,5 @@
+
+
 <?php
 session_start(); // Always start the session
 
@@ -20,15 +22,14 @@ try {
 }
 
 // Check if user is logged in
-if (!isset($_SESSION['user_email'])) {
+if (!isset($_SESSION['email'])) {
     header("Location: login.php");
     exit();
 }
 
 $userEmail = $_SESSION['email'];
-
 // Fetch user data
-$sql = "SELECT CONCAT(first_name, ' ', last_name) AS full_name, email, year_level, section, created_at 
+$sql = "SELECT CONCAT(first_name, ' ', last_name) AS full_name, email, year_level, section, student_number
         FROM user_account 
         WHERE email = ?";
 
@@ -42,10 +43,10 @@ if ($result && $result->num_rows > 0) {
 
     $name = $userData['full_name'];
     $email = $userData['email'];
+    $snum = $userData['student_number'];
     $yearLevel = $userData['year_level'];
     $section = $userData['section'];
     $MembershipStatus = $userData['membership_status'];
-    $joined = date("F Y", strtotime($userData['created_at']));
 } else {
     // Default fallback values
     $name = "John Doe";
@@ -53,10 +54,9 @@ if ($result && $result->num_rows > 0) {
     $yearLevel = "3rd Year";
     $profilePhoto = "default-avatar.png";
     $MembershipStatus = "Inactive";
-    $joined = "January 2025";
+    $joined = "May 2025";
 }
 ?>
-
 
 
 
@@ -69,12 +69,27 @@ if ($result && $result->num_rows > 0) {
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
       display: flex;
       justify-content: center;
       padding: 40px 20px;
       min-height: 100vh;
+      background: linear-gradient(270deg, #080743, #1f6eee, #89baff);
+  background-size: 600% 600%;
+  animation: gradientMove 7s ease infinite;
     }
+
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
 
     .profile-container {
       background-color: white;
@@ -224,19 +239,17 @@ if ($result && $result->num_rows > 0) {
 
     <h2>User Profile</h2>
 
-    <img
-      src="<?php echo !empty($profilePhoto) ? htmlspecialchars($profilePhoto) : 'sadwolf.jpg'; ?>"
-      alt="Profile Photo"
-      class="profile-photo"
-      id="profilePhoto"
+    <img src="sadwolf.jpg" alt="Profile Photo"
+      class="profile-photo" id="profilePhoto"
     />
 
     <div class="profile-info">
       <p><strong>Name:</strong> <?php echo htmlspecialchars($name ?? 'John Doe'); ?></p>
+      <p><strong>Student Number:</strong> <?php echo htmlspecialchars($snum ?? ''); ?></p>
       <p><strong>Email:</strong> <?php echo htmlspecialchars($email ?? 'jondoe@gmail.com'); ?></p>
       <p><strong>Year Level:</strong> <?php echo htmlspecialchars($yearLevel ?? '3rd Year'); ?></p>
       <p><strong>Section:</strong> <?php echo htmlspecialchars($section ?? 'A'); ?></p>
-      <p><strong>Joined:</strong> <?php echo htmlspecialchars($joined ?? 'January 2025'); ?></p>
+      <p><strong>Joined:</strong>May 2025</p>
 
     </div>
 

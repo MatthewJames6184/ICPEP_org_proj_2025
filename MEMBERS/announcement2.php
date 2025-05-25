@@ -45,6 +45,28 @@ Introducing your 𝗪𝗢𝗥𝗟𝗗 𝗖𝗛𝗔𝗠𝗣𝗜𝗢𝗡𝗦:
   <title>School Announcements</title>
   <link rel="stylesheet" href="announcement2.css" />
   <style>
+    body {
+  font-family: Arial, sans-serif;
+
+  margin: 0;
+  padding: 20px;
+background: linear-gradient(270deg, #080743, #1f6eee, #89baff);
+  background-size: 600% 600%;
+  animation: gradientMove 7s ease infinite;
+
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
     #content-area {
       background-color: rgb(196, 233, 255);
       padding: 20px;
@@ -58,7 +80,7 @@ Introducing your 𝗪𝗢𝗥𝗟𝗗 𝗖𝗛𝗔𝗠𝗣𝗜𝗢𝗡𝗦:
       border-radius: 12px;
       padding: 20px;
       margin-bottom: 20px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 10px hsla(0, 0.00%, 0.00%, 0.10);
       transition: transform 0.2s;
       position: relative;
     }
