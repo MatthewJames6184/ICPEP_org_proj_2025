@@ -25,12 +25,13 @@ if (!isset($_SESSION['user_email'])) {
     exit();
 }
 
-$userEmail = $_SESSION['user_email'];
+$userEmail = $_SESSION['email'];
 
 // Fetch user data
-$sql = "SELECT CONCAT(user_fname, ' ', user_lname) AS full_name, user_email, user_yearlevel, profile_photo, membership_status, created_at 
-        FROM users 
-        WHERE user_email = ?";
+$sql = "SELECT CONCAT(first_name, ' ', last_name) AS full_name, email, year_level, section, created_at 
+        FROM user_account 
+        WHERE email = ?";
+
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("s", $userEmail);
 $stmt->execute();
@@ -40,9 +41,9 @@ if ($result && $result->num_rows > 0) {
     $userData = $result->fetch_assoc();
 
     $name = $userData['full_name'];
-    $email = $userData['user_email'];
-    $yearLevel = $userData['user_yearlevel'];
-    $profilePhoto = $userData['profile_photo'];
+    $email = $userData['email'];
+    $yearLevel = $userData['year_level'];
+    $section = $userData['section'];
     $MembershipStatus = $userData['membership_status'];
     $joined = date("F Y", strtotime($userData['created_at']));
 } else {
@@ -233,8 +234,10 @@ if ($result && $result->num_rows > 0) {
     <div class="profile-info">
       <p><strong>Name:</strong> <?php echo htmlspecialchars($name ?? 'John Doe'); ?></p>
       <p><strong>Email:</strong> <?php echo htmlspecialchars($email ?? 'jondoe@gmail.com'); ?></p>
-      <p><strong>Joined:</strong> <?php echo htmlspecialchars($joined ?? 'January 2025'); ?></p>
       <p><strong>Year Level:</strong> <?php echo htmlspecialchars($yearLevel ?? '3rd Year'); ?></p>
+      <p><strong>Section:</strong> <?php echo htmlspecialchars($section ?? 'A'); ?></p>
+      <p><strong>Joined:</strong> <?php echo htmlspecialchars($joined ?? 'January 2025'); ?></p>
+
     </div>
 
     <?php 
