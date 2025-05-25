@@ -3,7 +3,7 @@
 		$db_server = "localhost";	// change this to your database server
 	$db_user = "u495515480_ICPEP_dbs";			// change this to your database username
 	$db_pass = "icpepElec_se#2025";			// change this to your database password
-	$db_name = "icpep_web_dbms";
+	$db_name = "u495515480_icpep_web_dbms";
 	$db_port = NO DB PORT */
 	
 	//$conn = new mysqli("localhost", "u495515480_root", "Voting$123", "voting_db");
