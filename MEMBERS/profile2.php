@@ -186,45 +186,7 @@
       Membership Status: <?php echo htmlspecialchars($MembershipStatus ?? 'Inactive'); ?>
     </p>
 
-    <hr />
 
-    <!-- Edit Profile Info -->
-    <form action="edit_profile.php" method="POST">
-      <h3>Edit Profile Information</h3>
-      
-      <label for="name">Name</label>
-      <input 
-        type="text" 
-        id="name" 
-        name="name" 
-        placeholder="<?php echo htmlspecialchars($name ?? 'Your Name'); ?>" 
-        required 
-      />
-
-      <label for="email">Email</label>
-      <input 
-        type="email" 
-        id="email" 
-        name="email" 
-        placeholder="<?php echo htmlspecialchars($email ?? 'your.email@example.com'); ?>" 
-        required 
-      />
-
-      <label for="yearLevel">Year Level</label>
-      <select id="yearLevel" name="yearLevel" required>
-        <option value="" disabled selected>
-          <?php echo htmlspecialchars($yearLevel ?? 'Select your Year Level'); ?>
-        </option>
-        <option value="1st Year">1st Year</option>
-        <option value="2nd Year">2nd Year</option>
-        <option value="3rd Year">3rd Year</option>
-        <option value="4th Year">4th Year</option>
-      </select>
-
-      <input type="submit" value="Save Changes" />
-    </form>
-
-    <hr />
 
     <hr />
 
