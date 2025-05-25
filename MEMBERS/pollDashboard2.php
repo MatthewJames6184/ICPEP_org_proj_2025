@@ -94,7 +94,7 @@
         <a href="#" class="nav-item active" data-section="poll2.php">Poll</a>
         <a href="#" class="nav-item" data-section="membership2.php">Membership</a>
         <a href="#" class="nav-item" data-section="announcement2.php">Announcement</a>
-        <a href="#" class="nav-item" data-section="/voting/voting_form.php">Election</a>
+        <a href="#" class="nav-item" data-section="voting_form.php">Election</a>
         <a href="#" class="nav-item" data-section="profile2.php">Profile</a>
         <img src="icpep name.png" alt="Logo" class="nav-logo" />
     </nav>
