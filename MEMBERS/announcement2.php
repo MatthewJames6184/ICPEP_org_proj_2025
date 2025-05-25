@@ -46,7 +46,7 @@ Introducing your 𝗪𝗢𝗥𝗟𝗗 𝗖𝗛𝗔𝗠𝗣𝗜𝗢𝗡𝗦:
   <link rel="stylesheet" href="announcement2.css" />
   <style>
     #content-area {
-      background-color: white;
+      background-color: rgb(196, 233, 255);
       padding: 20px;
       border-radius: 8px;
       margin: 20px auto;
@@ -54,7 +54,7 @@ Introducing your 𝗪𝗢𝗥𝗟𝗗 𝗖𝗛𝗔𝗠𝗣𝗜𝗢𝗡𝗦:
       max-width: 1000px;
     }
     .announcement {
-      background-color:rgb(170, 212, 254);
+      background-color:rgb(255, 255, 255);
       border-radius: 12px;
       padding: 20px;
       margin-bottom: 20px;
