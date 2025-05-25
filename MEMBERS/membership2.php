@@ -11,7 +11,7 @@
     <div class="membership-container">
         <h1>MEMBERSHIP</h1>
 
-        <form id="membershipForm" enctype="multipart/form-data">
+        <form id="membershipForm" enctype="multipart/form-data" action="upload.php">
             <label for="name">NAME:</label>
             <input type="text" id="name" name="name" required>
 
@@ -21,7 +21,7 @@
             <label for="section">SECTION:</label>
             <input type="text" id="section" name="section" required>
 
-            <a href="#" class="payment-link">Available Payment Methods</a>
+
             <div class="upload-box">
                 <p>UPLOAD PDF, PNG, JPG FILE</p>
 
@@ -29,10 +29,9 @@
                 <label for="fileUpload" class="custom-upload-label">Choose File</label>
             </div>
 
+            <input type="submit" id="submit" value="Submit">
 
         </form>
-
-        <button class="back-btn" onclick="history.back()">←</button>
     </div>
 
     <script src="membership2.js"></script>

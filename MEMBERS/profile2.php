@@ -1,3 +1,65 @@
+<?php
+session_start(); // Always start the session
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+$db_server = "localhost";	
+$db_user   = "u495515480_ICPEP_dbs";			
+$db_pass   = "icpepElec_se#2025";			
+$db_name   = "u495515480_icpep_web_dbms";
+
+// Create connection
+try {
+    $conn = new mysqli($db_server, $db_user, $db_pass, $db_name);
+    $conn->set_charset("utf8mb4"); // Optional: sets charset for security and compatibility
+} catch (mysqli_sql_exception $e) {
+    // Custom error message (better than just "Connection Unsuccessful")
+    die("Database connection failed: " . $e->getMessage());
+}
+
+// Check if user is logged in
+if (!isset($_SESSION['user_email'])) {
+    header("Location: login.php");
+    exit();
+}
+
+$userEmail = $_SESSION['email'];
+
+// Fetch user data
+$sql = "SELECT CONCAT(first_name, ' ', last_name) AS full_name, email, year_level, section, created_at 
+        FROM user_account 
+        WHERE email = ?";
+
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("s", $userEmail);
+$stmt->execute();
+$result = $stmt->get_result();
+
+if ($result && $result->num_rows > 0) {
+    $userData = $result->fetch_assoc();
+
+    $name = $userData['full_name'];
+    $email = $userData['email'];
+    $yearLevel = $userData['year_level'];
+    $section = $userData['section'];
+    $MembershipStatus = $userData['membership_status'];
+    $joined = date("F Y", strtotime($userData['created_at']));
+} else {
+    // Default fallback values
+    $name = "John Doe";
+    $email = "jondoe@gmail.com";
+    $yearLevel = "3rd Year";
+    $profilePhoto = "default-avatar.png";
+    $MembershipStatus = "Inactive";
+    $joined = "January 2025";
+}
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -160,13 +222,10 @@
 
   <div class="profile-container">
 
-
-
     <h2>User Profile</h2>
 
-    <!-- Profile Photo -->
     <img
-      src="<?php echo !empty($profilePhoto) ? htmlspecialchars($profilePhoto) : 'default-avatar.png'; ?>"
+      src="<?php echo !empty($profilePhoto) ? htmlspecialchars($profilePhoto) : 'sadwolf.jpg'; ?>"
       alt="Profile Photo"
       class="profile-photo"
       id="profilePhoto"
@@ -175,8 +234,10 @@
     <div class="profile-info">
       <p><strong>Name:</strong> <?php echo htmlspecialchars($name ?? 'John Doe'); ?></p>
       <p><strong>Email:</strong> <?php echo htmlspecialchars($email ?? 'jondoe@gmail.com'); ?></p>
-      <p><strong>Joined:</strong> <?php echo htmlspecialchars($joined ?? 'January 2025'); ?></p>
       <p><strong>Year Level:</strong> <?php echo htmlspecialchars($yearLevel ?? '3rd Year'); ?></p>
+      <p><strong>Section:</strong> <?php echo htmlspecialchars($section ?? 'A'); ?></p>
+      <p><strong>Joined:</strong> <?php echo htmlspecialchars($joined ?? 'January 2025'); ?></p>
+
     </div>
 
     <?php 
@@ -186,75 +247,11 @@
       Membership Status: <?php echo htmlspecialchars($MembershipStatus ?? 'Inactive'); ?>
     </p>
 
-    <hr />
 
-    <!-- Edit Profile Info -->
-    <form action="edit_profile.php" method="POST">
-      <h3>Edit Profile Information</h3>
-      
-      <label for="name">Name</label>
-      <input 
-        type="text" 
-        id="name" 
-        name="name" 
-        placeholder="<?php echo htmlspecialchars($name ?? 'Your Name'); ?>" 
-        required 
-      />
-
-      <label for="email">Email</label>
-      <input 
-        type="email" 
-        id="email" 
-        name="email" 
-        placeholder="<?php echo htmlspecialchars($email ?? 'your.email@example.com'); ?>" 
-        required 
-      />
-
-      <label for="yearLevel">Year Level</label>
-      <select id="yearLevel" name="yearLevel" required>
-        <option value="" disabled selected>
-          <?php echo htmlspecialchars($yearLevel ?? 'Select your Year Level'); ?>
-        </option>
-        <option value="1st Year">1st Year</option>
-        <option value="2nd Year">2nd Year</option>
-        <option value="3rd Year">3rd Year</option>
-        <option value="4th Year">4th Year</option>
-      </select>
-
-      <input type="submit" value="Save Changes" />
-    </form>
-
-    <hr />
-
-    <!-- Change Password -->
-    <form action="change_password.php" method="POST">
-      <h3>Change Password</h3>
-      <label for="currentPassword">Current Password</label>
-      <input type="password" id="currentPassword" name="currentPassword" required />
-
-      <label for="newPassword">New Password</label>
-      <input type="password" id="newPassword" name="newPassword" required />
-
-      <label for="confirmPassword">Confirm New Password</label>
-      <input type="password" id="confirmPassword" name="confirmPassword" required />
-
-      <input type="submit" value="Update Password" />
-    </form>
-
-    <hr />
-
-    <!-- Upload / Change Profile Photo -->
-    <form action="upload_photo.php" method="POST" enctype="multipart/form-data">
-      <h3>Upload / Change Profile Photo</h3>
-      <label for="profilePhotoUpload">Select Photo</label>
-      <input type="file" id="profilePhotoUpload" name="profilePhoto" accept="image/*" required />
-
-      <input type="submit" value="Upload Photo" />
-    </form>
 
     <!-- Logout Button at the Bottom -->
     <div class="logout-bottom">
-      <form action="logout.php" method="POST">
+      <form action="/login-branch/logout.php" method="POST">
         <input type="submit" value="Logout" />
       </form>
     </div>
