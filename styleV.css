@@ -1,0 +1,106 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 20px;
+}
+
+form {
+  margin-top: 20px;
+}
+
+.position {
+  margin-bottom: 25px;
+  background-color: rgba(249, 249, 249, 0.9); /* Slight transparency */
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.position h2 {
+  margin-top: 0;
+  font-size: 18px;
+  color: #004080;
+  margin-bottom: 10px;
+}
+
+label {
+  display: block;
+  padding-left: 10px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+button[type="submit"] {
+  display: block;
+  margin: 30px auto 0;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: rgba(0, 64, 128, 0.9); /* Slight transparency */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: rgba(0, 102, 204, 0.9); /* Slight transparency */
+}
+
+.container {
+  background: white;
+  padding: 20px;
+  border-radius: 6px;
+  max-width: 800px;
+  margin: auto;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+h1, h2 {
+  color: #004080;
+}
+/* Remove or soften the nested borders */
+fieldset {
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+}
+
+/* Remove borders and reduce left padding for nested fieldsets */
+fieldset fieldset {
+  border: none;
+  padding-left: 15px; /* reduce heavy indentation */
+  margin-left: 0;
+  margin-bottom: 10px;
+  border-left: 3px solid #004080; /* subtle vertical line instead of full box */
+}
+
+/* Optional: style legend for clarity */
+legend {
+  font-weight: bold;
+  color: #004080;
+  padding: 0 5px;
+  font-size: 16px;
+}
+
+/* Radio buttons align nicely */
+label {
+  display: flex;
+  align-items: center;
+  padding-left: 0;
+  cursor: pointer;
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+
+input[type="radio"] {
+  margin-right: 10px;
+}
