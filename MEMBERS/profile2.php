@@ -185,12 +185,8 @@
     <p class="membership-status <?php echo $isActive ? '' : 'inactive'; ?>">
       Membership Status: <?php echo htmlspecialchars($MembershipStatus ?? 'Inactive'); ?>
     </p>
-
-
-
     <hr />
 
-    <!-- Upload / Change Profile Photo -->
     <form action="upload_photo.php" method="POST" enctype="multipart/form-data">
       <h3>Upload / Change Profile Photo</h3>
       <label for="profilePhotoUpload">Select Photo</label>
