@@ -1,6 +1,10 @@
 <?php
 session_start(); // Always start the session
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 $db_server = "localhost";	
 $db_user   = "u495515480_ICPEP_dbs";			
 $db_pass   = "icpepElec_se#2025";			
