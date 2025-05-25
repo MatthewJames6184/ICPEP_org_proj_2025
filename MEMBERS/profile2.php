@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>User Profile</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      padding: 40px 20px;
+      min-height: 100vh;
+    }
+
+    .profile-container {
+      background-color: white;
+      padding: 40px 50px 50px 50px;
+      border-radius: 15px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+      max-width: 800px;
+      width: 100%;
+      overflow-y: auto;
+      max-height: 90vh;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    h2 {
+      margin-top: 0;
+      color: #004080;
+      font-size: 38px;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .profile-photo {
+      display: block;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #004080;
+      margin: 0 auto 30px auto;
+      background-color: #ddd;
+    }
+
+    .profile-info p {
+      font-size: 22px;
+      margin: 15px 0;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 12px;
+      text-align: left;
+      font-weight: 600;
+    }
+
+    .membership-status {
+      font-weight: 700;
+      margin: 30px 0 40px 0;
+      text-align: center;
+      font-size: 24px;
+      color: #008000;
+    }
+
+    .membership-status.inactive {
+      color: #cc0000;
+    }
+
+    .back-btn {
+      position: absolute;
+      top: 20px;
+      right: 25px;
+      background: none;
+      border: none;
+      color: #004080;
+      font-size: 32px;
+      cursor: pointer;
+      font-weight: bold;
+      line-height: 1;
+      padding: 0;
+    }
+
+    .back-btn:hover {
+      color: #002050;
+    }
+
+    form {
+      margin-top: 30px;
+      font-size: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 700;
+      color: #004080;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="file"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px 15px;
+      font-size: 20px;
+      margin-bottom: 25px;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      box-sizing: border-box;
+      transition: border-color 0.3s ease;
+      font-family: Arial, sans-serif;
+      resize: vertical;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="password"]:focus,
+    select:focus,
+    textarea:focus {
+      border-color: #004080;
+      outline: none;
+    }
+
+    input[type="submit"],
+    button[type="submit"] {
+      background-color: #004080;
+      border: none;
+      padding: 15px 30px;
+      color: white;
+      font-weight: 700;
+      font-size: 22px;
+      cursor: pointer;
+      border-radius: 10px;
+      margin-top: 10px;
+      width: 100%;
+      box-sizing: border-box;
+      transition: background-color 0.3s ease;
+    }
+
+    input[type="submit"]:hover,
+    button[type="submit"]:hover {
+      background-color: #002050;
+    }
+
+    .logout-bottom {
+      margin-top: 40px;
+    }
+
+    hr {
+      margin: 50px 0;
+      border: none;
+      border-top: 2px solid #eee;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="profile-container">
+
+
+
+    <h2>User Profile</h2>
+
+    <!-- Profile Photo -->
+    <img
+      src="<?php echo !empty($profilePhoto) ? htmlspecialchars($profilePhoto) : 'default-avatar.png'; ?>"
+      alt="Profile Photo"
+      class="profile-photo"
+      id="profilePhoto"
+    />
+
+    <div class="profile-info">
+      <p><strong>Name:</strong> <?php echo htmlspecialchars($name ?? 'John Doe'); ?></p>
+      <p><strong>Email:</strong> <?php echo htmlspecialchars($email ?? 'jondoe@gmail.com'); ?></p>
+      <p><strong>Joined:</strong> <?php echo htmlspecialchars($joined ?? 'January 2025'); ?></p>
+      <p><strong>Year Level:</strong> <?php echo htmlspecialchars($yearLevel ?? '3rd Year'); ?></p>
+    </div>
+
+    <?php 
+      $isActive = isset($MembershipStatus) && strtolower($MembershipStatus) === 'active';
+    ?>
+    <p class="membership-status <?php echo $isActive ? '' : 'inactive'; ?>">
+      Membership Status: <?php echo htmlspecialchars($MembershipStatus ?? 'Inactive'); ?>
+    </p>
+
+    <hr />
+
+    <!-- Edit Profile Info -->
+    <form action="edit_profile.php" method="POST">
+      <h3>Edit Profile Information</h3>
+      
+      <label for="name">Name</label>
+      <input 
+        type="text" 
+        id="name" 
+        name="name" 
+        placeholder="<?php echo htmlspecialchars($name ?? 'Your Name'); ?>" 
+        required 
+      />
+
+      <label for="email">Email</label>
+      <input 
+        type="email" 
+        id="email" 
+        name="email" 
+        placeholder="<?php echo htmlspecialchars($email ?? 'your.email@example.com'); ?>" 
+        required 
+      />
+
+      <label for="yearLevel">Year Level</label>
+      <select id="yearLevel" name="yearLevel" required>
+        <option value="" disabled selected>
+          <?php echo htmlspecialchars($yearLevel ?? 'Select your Year Level'); ?>
+        </option>
+        <option value="1st Year">1st Year</option>
+        <option value="2nd Year">2nd Year</option>
+        <option value="3rd Year">3rd Year</option>
+        <option value="4th Year">4th Year</option>
+      </select>
+
+      <input type="submit" value="Save Changes" />
+    </form>
+
+    <hr />
+
+    <!-- Change Password -->
+    <form action="change_password.php" method="POST">
+      <h3>Change Password</h3>
+      <label for="currentPassword">Current Password</label>
+      <input type="password" id="currentPassword" name="currentPassword" required />
+
+      <label for="newPassword">New Password</label>
+      <input type="password" id="newPassword" name="newPassword" required />
+
+      <label for="confirmPassword">Confirm New Password</label>
+      <input type="password" id="confirmPassword" name="confirmPassword" required />
+
+      <input type="submit" value="Update Password" />
+    </form>
+
+    <hr />
+
+    <!-- Upload / Change Profile Photo -->
+    <form action="upload_photo.php" method="POST" enctype="multipart/form-data">
+      <h3>Upload / Change Profile Photo</h3>
+      <label for="profilePhotoUpload">Select Photo</label>
+      <input type="file" id="profilePhotoUpload" name="profilePhoto" accept="image/*" required />
+
+      <input type="submit" value="Upload Photo" />
+    </form>
+
+    <!-- Logout Button at the Bottom -->
+    <div class="logout-bottom">
+      <form action="logout.php" method="POST">
+        <input type="submit" value="Logout" />
+      </form>
+    </div>
+
+  </div>
+
+</body>
+</html>
