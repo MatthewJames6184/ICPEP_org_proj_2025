@@ -74,10 +74,10 @@
 				<label for="user_section">Section:</label>
 				<select name="user_section" id="user_section" required>
 					<option value="">-- Select Section --</option>
-					<option value="CpE-3A">CpE-3A</option>
-					<option value="CpE-3B">CpE-3B</option>
-					<option value="CpE-3C">CpE-3C</option>
-					<option value="CpE-3D">CpE-3D</option>
+					<option value="CpE-3A">A</option>
+					<option value="CpE-3B">B</option>
+					<option value="CpE-3C">C</option>
+					<option value="CpE-3D">D</option>
 				</select>
 			</div>
 
