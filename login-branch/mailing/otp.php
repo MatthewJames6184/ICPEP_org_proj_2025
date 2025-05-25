@@ -1,6 +1,7 @@
 <?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>OTP Verification</title>
@@ -87,14 +88,15 @@
         }
     </style>
 </head>
+
 <body>
     <div class="otp-container">
-        <form id="otpForm" autocomplete="off" method="post" action="send_otp.php">
+        <form id="otpForm" autocomplete="off">
             <h2>Enter OTP</h2>
             <p>An OTP has been sent to your email. Please enter it below:</p>
             <input type="text" id="otpInput" name="otp" placeholder="Enter OTP" maxlength="6" required />
             <div>
-                <button type="submit" id="verifyOtpBtn">Verify OTP</button>
+                <button type="button" id="verifyOtpBtn">Verify OTP</button>
                 <button type="button" id="resendOtpBtn" disabled>Resend OTP</button>
             </div>
             <div id="timerDisplay"></div>
@@ -109,4 +111,5 @@
     </script>
     <script src="otp_verification.js"></script>
 </body>
+
 </html>
