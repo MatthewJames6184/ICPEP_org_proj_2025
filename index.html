@@ -18,7 +18,7 @@
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
     <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
-    <script src="./js/main.js"></script>
+    <script src="/js/main.js"></script>
 </head>
 <body>
     <header class="header">
@@ -32,7 +32,9 @@
                 <li><a href="#contact">contact</a></li>
                 <li><a href="#about">about</a></li>
                 <li><a href="#team">Developers</a></li>
-                <a href="login.html" class="btn btn-yellow btn-lg login-btn">Login</a>
+                <form action="LOGIN/login.php" method="POST">
+                  <button type="submit" class="btn btn-yellow btn-lg login-btn">Login</button>
+                </form>
 
             </ul>
         </nav>
@@ -271,9 +273,6 @@
           </div>
       </div>
   </div>
-    <div class="wave wave1"></div>
-    <div class="wave wave2"></div>
-    <div class="wave wave3"></div>
  
 </section>
 
