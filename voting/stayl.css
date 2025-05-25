@@ -1,0 +1,72 @@
+/* Container for the whole page */
+.container {
+  max-width: 700px;
+  margin: 40px auto;
+  background: white;
+  padding: 30px 25px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  font-family: Arial, sans-serif;
+}
+
+/* Main heading */
+h1 {
+  color: #004080;
+  font-weight: 700;
+  margin-bottom: 30px;
+  font-size: 28px;
+  text-align: center;
+}
+
+/* Each position block */
+.position {
+  border: 1px solid #ddd;
+  padding: 18px 20px;
+  margin-bottom: 25px;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+}
+
+/* Position title */
+.position h2 {
+  color: #004080;
+  font-size: 20px;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+/* Candidate or abstain text */
+.position p {
+  font-size: 16px;
+  margin: 8px 0;
+  color: #333;
+  display: flex;
+  align-items: center;
+}
+
+/* Add checkmark before candidate names */
+.position p::before {
+  content: "✔";
+  color: green;
+  margin-right: 10px;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 1;
+}
+
+/* Override checkmark for abstained lines */
+.position p:contains("🚫 Abstained")::before {
+  content: "🚫";
+  color: red;
+  margin-right: 10px;
+}
+
+/* Optional: If :contains pseudo-class is not supported, use a class in PHP for abstained */
+/* Example for fallback */
+/*
+.abstained::before {
+  content: "🚫";
+  color: red;
+  margin-right: 10px;
+}
+*/
