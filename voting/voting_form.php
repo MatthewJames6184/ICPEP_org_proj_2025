@@ -1,5 +1,6 @@
 <?php
-$conn = new mysqli("localhost", "u495515480_root", "Voting$123", "voting_db");
+//$conn = new mysqli("localhost", "u495515480_root", "Voting$123", "voting_db");
+$conn = new mysqli("localhost", "root", "", "voting_db");
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
@@ -33,12 +34,13 @@ $conn->close();
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Voting Form</title>
+    <title>LycanCore Voting Form</title>
     <link rel="stylesheet" href="styleV.css">
 </head>
 <body>
 <div class="container">
-    <h1>Student Council Voting Form</h1>
+    <img src="logo.png" alt="" id="icon">
+    <h1>ICpEP.SE Officers Voting Form</h1>
     <form method="POST" action="submit_vote.php" id="votingForm">
         <?php foreach ($candidatesByPosition as $position => $candidates): ?>
             <div class="position" data-position="<?= htmlspecialchars($position) ?>">
@@ -90,7 +92,6 @@ $conn->close();
     </form>
 </div>
 
-<!-- Include external validation script -->
 <script src="script.js"></script>
 </body>
 </html>

@@ -1,9 +1,10 @@
 <?php
-$conn = new mysqli("localhost", "u495515480_root", "Voting$123", "voting_db");
+session_start();
+
+$conn = new mysqli("localhost", "root", "", "voting_db");
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-
 
 // Helper function to safely flatten votes if nested accidentally
 function flatten_votes($votes) {
@@ -41,6 +42,7 @@ if (isset($_SESSION['voted']) && is_array($_SESSION['voted'])) {
 </head>
 <body>
 <div class="container">
+    <img src="logo.png" alt="" id="icon">
     <h1>Thank You for Voting!</h1>
 
     <?php if (!empty($voted)): ?>
@@ -81,6 +83,18 @@ if (isset($_SESSION['voted']) && is_array($_SESSION['voted'])) {
     <?php else: ?>
         <p>No votes were recorded.</p>
     <?php endif; ?>
+</div>
+<div style="text-align:center; margin-top: 30px;">
+  <a href="export_votes_pdf.php" target="_blank" 
+     style="display: inline-block; 
+            padding: 12px 25px; 
+            background-color: #004080; 
+            color: white; 
+            text-decoration: none; 
+            font-weight: bold; 
+            border-radius: 6px;">
+    Download Voting Results as PDF
+  </a>
 </div>
 </body>
 </html>

@@ -1,17 +1,50 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
+
   margin: 0;
   padding: 20px;
+background: linear-gradient(270deg, #080743, #1f6eee, #89baff);
+  background-size: 600% 600%;
+  animation: gradientMove 7s ease infinite;
+
 }
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.container {
+background: rgba( 255, 255, 255, 0.55 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 5px );
+-webkit-backdrop-filter: blur( 5px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
 
 form {
   margin-top: 20px;
 }
 
+#icon {
+  display: block;
+  max-width: 150px;  
+  height: auto;
+  margin: 0 auto 10px; /* Center the image and add space below */
+}
+
 .position {
   margin-bottom: 25px;
-  background-color: rgba(249, 249, 249, 0.9); /* Slight transparency */
+  background-color: rgba(199, 217, 253, 0.8); /* Slight transparency */
   padding: 15px;
   border: 1px solid #ddd;
   border-radius: 6px;
@@ -19,9 +52,11 @@ form {
 
 .position h2 {
   margin-top: 0;
+  margin: 0 auto 10px;
   font-size: 18px;
-  color: #004080;
+  color: #07114d;
   margin-bottom: 10px;
+  align-items: center;
 }
 
 label {
@@ -55,7 +90,7 @@ button[type="submit"]:hover {
 }
 
 .container {
-  background: white;
+ /* background: white;*/
   padding: 20px;
   border-radius: 6px;
   max-width: 800px;
@@ -63,8 +98,13 @@ button[type="submit"]:hover {
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
-h1, h2 {
-  color: #004080;
+h1{
+  text-align: center;
+  color: #050437;
+}
+
+h2 {
+  color: #031a32;
 }
 /* Remove or soften the nested borders */
 fieldset {
