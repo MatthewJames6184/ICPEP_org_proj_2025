@@ -11,7 +11,7 @@
     <div class="membership-container">
         <h1>MEMBERSHIP</h1>
 
-        <form id="membershipForm" enctype="multipart/form-data">
+        <form id="membershipForm" enctype="multipart/form-data" action="upload.php">
             <label for="name">NAME:</label>
             <input type="text" id="name" name="name" required>
 

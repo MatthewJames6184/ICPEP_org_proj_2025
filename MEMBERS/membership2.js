@@ -28,12 +28,24 @@ document.getElementById("uploadBtn").addEventListener("click", function () {
 
 });
 
-document.getElementById("membershipForm").addEventListener("submit", function (e) {
-    e.preventDefault(); // Prevent actual form submission
+document.getElementById('membershipForm').addEventListener('submit', function(e) {
+    e.preventDefault(); // prevent default form submission
 
-    // Show the popup message
-    alert("You are verified!");
+    const form = e.target;
+    const formData = new FormData(form);
 
-    // Optional: Clear the form
-    this.reset();
+    fetch(form.action, {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.text())
+    .then(result => {
+        alert("You are verified!\n\n" + result);
+        form.reset();
+    })
+    .catch(error => {
+        alert("Upload failed. Please try again.");
+        console.error(error);
+    });
 });
+
