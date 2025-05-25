@@ -1,6 +1,6 @@
 <?php
 session_start();
-$conn = new mysqli("localhost", "u495515480_root", "Voting$123", "voting_db");
+$conn = new mysqli("localhost", "u495515480_root", "Voting$123", "u495515480_voting_db");
 //$conn = new mysqli("localhost", "root", "", "voting_db");
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);

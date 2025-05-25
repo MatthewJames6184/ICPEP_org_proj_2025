@@ -1,124 +1,91 @@
 <?php
 session_start();
 
-// TODO: Replace this with your actual PDO connection
-// Example:
-// $pdo = new PDO("mysql:host=localhost;dbname=your_db", "your_user", "your_pass");
-// $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-$pdo = null; // Placeholder to prevent errors if you haven't set up your DB yet
+// Database connection - replace with your actual credentials
+$servername = "localhost"; // or your server name
+$username = "u495515480_root"; // your database username
+$password = "Voting$123"; // your database password
+$dbname = "u495515480_voting_db"; // your database name
 
-$polls = [];
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
 
-// TODO: Replace with actual fetch from your database
-// Example:
-// $stmt = $pdo->query("SELECT * FROM polls");
-// $polls = $stmt->fetchAll(PDO::FETCH_ASSOC);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
-// Sample placeholder poll for testing without database
-$polls[] = [
-    'id' => 1,
-    'name' => 'Sample Event',
-    'date' => '2025-06-15',
-    'start_time' => '10:00',
-    'end_time' => '14:00',
-    'location' => 'Bulacan State University',
-    'amount' => 'Free',
-    'theme' => 'Innovation and Technology',
-    'yes_votes' => 12,
-    'no_votes' => 3
-];
+$poll_id = 1; // assuming single poll for simplicity
 
-// Handle voting (simulation only — no DB update)
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pollId'], $_POST['vote'])) {
-    $pollId = (int)$_POST['pollId'];
-    $vote = $_POST['vote'];
+// Handle vote submission
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['vote_option'])) {
+    $vote_option = $_POST['vote_option'];
 
-    // Simulate voting session
-    if (!isset($_SESSION['votes'][$pollId])) {
-        // TODO: Update your poll's yes/no vote count in the database
-        // Example:
-        // $pdo->prepare("UPDATE polls SET yes_votes = yes_votes + 1 WHERE id = ?")->execute([$pollId]);
+    // Prevent multiple voting by same user (simple session check)
+    if (!isset($_SESSION['voted_poll_' . $poll_id])) {
+        // Increment the vote count in DB
+        $stmt = $conn->prepare("UPDATE poll_votes SET votes = votes + 1 WHERE poll_id = ? AND option_name = ?");
+        $stmt->bind_param("is", $poll_id, $vote_option);
+        $stmt->execute();
+        $stmt->close();
 
-        $_SESSION['votes'][$pollId] = $vote;
-        header("Location: poll.php");
-        exit;
+        $_SESSION['voted_poll_' . $poll_id] = true; // mark voted
     }
+    // Redirect to avoid resubmission on refresh
+    header("Location: " . $_SERVER['PHP_SELF']);
+    exit();
+}
+
+// Fetch current vote counts from DB
+$sql = "SELECT option_name, votes FROM poll_votes WHERE poll_id = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $poll_id);
+$stmt->execute();
+$result = $stmt->get_result();
+
+$votes = [];
+$total_votes = 0;
+while ($row = $result->fetch_assoc()) {
+    $votes[$row['option_name']] = (int)$row['votes'];
+    $total_votes += (int)$row['votes'];
+}
+$stmt->close();
+
+function percent($count, $total) {
+    if ($total === 0) return 0;
+    return round(($count / $total) * 100, 1);
 }
 ?>
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Event Polls</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #e9f0f7;
-            color: #004080;
-            padding: 30px;
-        }
-        .container {
-            max-width: 700px;
-            margin: auto;
-        }
-        .poll {
-            background-color: white;
-            color: black;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 20px;
-        }
-        .poll h3 {
-            margin-top: 0;
-        }
-        .poll p {
-            margin: 5px 0;
-        }
-        .poll button {
-            padding: 10px 20px;
-            margin: 5px;
-            border: none;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-        .yes { background-color: #28a745; color: white; }
-        .no { background-color: #dc3545; color: white; }
-        .voted {
-            font-style: italic;
-            color: #888;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <title>Poll</title>
+  <link rel="stylesheet" href="poll2.css" />
 </head>
 <body>
-<div class="container">
-    <h1>Event Polls</h1>
+  <div class="container">
+    <h1>Do you like this poll system?</h1>
 
-    <?php if (count($polls) === 0): ?>
-        <p>No events available.</p>
+    <?php if (isset($_SESSION['voted_poll_' . $poll_id])): ?>
+      <p class="voted-msg">Thank you for voting!</p>
+
+      <div class="results-bar">
+        <div class="yes-result" style="width: <?= percent($votes['yes'] ?? 0, $total_votes) ?>%">
+          Yes (<?= $votes['yes'] ?? 0 ?> votes)
+        </div>
+        <div class="no-result" style="width: <?= percent($votes['no'] ?? 0, $total_votes) ?>%">
+          No (<?= $votes['no'] ?? 0 ?> votes)
+        </div>
+      </div>
+      <p>Total votes: <?= $total_votes ?></p>
+
     <?php else: ?>
-        <?php foreach ($polls as $poll): ?>
-            <div class="poll">
-                <h3><?= htmlspecialchars($poll['name']) ?></h3>
-                <p><strong>Date:</strong> <?= htmlspecialchars($poll['date']) ?></p>
-                <p><strong>Time:</strong> <?= htmlspecialchars($poll['start_time']) ?> - <?= htmlspecialchars($poll['end_time']) ?></p>
-                <p><strong>Location:</strong> <?= htmlspecialchars($poll['location']) ?></p>
-                <p><strong>Amount:</strong> <?= htmlspecialchars($poll['amount']) ?></p>
-                <p><strong>Theme:</strong> <?= htmlspecialchars($poll['theme']) ?></p>
-                <p><strong>Votes:</strong> Yes (<?= $poll['yes_votes'] ?>), No (<?= $poll['no_votes'] ?>)</p>
-
-                <?php if (!isset($_SESSION['votes'][$poll['id']])): ?>
-                    <form method="post">
-                        <input type="hidden" name="pollId" value="<?= $poll['id'] ?>">
-                        <button class="yes" name="vote" value="yes">Yes</button>
-                        <button class="no" name="vote" value="no">No</button>
-                    </form>
-                <?php else: ?>
-                    <p class="voted">You voted: <strong><?= strtoupper($_SESSION['votes'][$poll['id']]) ?></strong></p>
-                <?php endif; ?>
-            </div>
-        <?php endforeach; ?>
+      <form method="post" class="vote-form">
+        <button class="btn yes" type="submit" name="vote_option" value="yes">Yes</button>
+        <button class="btn no" type="submit" name="vote_option" value="no">No</button>
+      </form>
     <?php endif; ?>
-</div>
+  </div>
 </body>
 </html>
