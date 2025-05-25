@@ -1,5 +1,65 @@
 
 
+<?php
+session_start(); // Always start the session
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+$db_server = "localhost";	
+$db_user   = "u495515480_ICPEP_dbs";			
+$db_pass   = "icpepElec_se#2025";			
+$db_name   = "u495515480_icpep_web_dbms";
+
+// Create connection
+try {
+    $conn = new mysqli($db_server, $db_user, $db_pass, $db_name);
+    $conn->set_charset("utf8mb4"); // Optional: sets charset for security and compatibility
+} catch (mysqli_sql_exception $e) {
+    // Custom error message (better than just "Connection Unsuccessful")
+    die("Database connection failed: " . $e->getMessage());
+}
+
+// Check if user is logged in
+if (!isset($_SESSION['email'])) {
+    header("Location: login.php");
+    exit();
+}
+
+$userEmail = $_SESSION['email'];
+// Fetch user data
+$sql = "SELECT CONCAT(first_name, ' ', last_name) AS full_name, email, year_level, section, student_number
+        FROM user_account 
+        WHERE email = ?";
+
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("s", $userEmail);
+$stmt->execute();
+$result = $stmt->get_result();
+
+if ($result && $result->num_rows > 0) {
+    $userData = $result->fetch_assoc();
+
+    $name = $userData['full_name'];
+    $email = $userData['email'];
+    $snum = $userData['student_number'];
+    $yearLevel = $userData['year_level'];
+    $section = $userData['section'];
+    $MembershipStatus = $userData['membership_status'];
+} else {
+    // Default fallback values
+    $name = "John Doe";
+    $email = "jondoe@gmail.com";
+    $yearLevel = "3rd Year";
+    $profilePhoto = "default-avatar.png";
+    $MembershipStatus = "Inactive";
+    $joined = "May 2025";
+}
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -175,75 +235,12 @@
 </head>
 <body>
 
-<?php
-session_start(); // Always start the session
-
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
-$db_server = "localhost";	
-$db_user   = "u495515480_ICPEP_dbs";			
-$db_pass   = "icpepElec_se#2025";			
-$db_name   = "u495515480_icpep_web_dbms";
-
-// Create connection
-try {
-    $conn = new mysqli($db_server, $db_user, $db_pass, $db_name);
-    $conn->set_charset("utf8mb4"); // Optional: sets charset for security and compatibility
-} catch (mysqli_sql_exception $e) {
-    // Custom error message (better than just "Connection Unsuccessful")
-    die("Database connection failed: " . $e->getMessage());
-}
-
-// Check if user is logged in
-if (!isset($_SESSION['email'])) {
-    header("Location: login.php");
-    exit();
-}
-
-$userEmail = $_SESSION['email'];
-// Fetch user data
-$sql = "SELECT CONCAT(first_name, ' ', last_name) AS full_name, email, year_level, section, student_number
-        FROM user_account 
-        WHERE email = ?";
-
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("s", $userEmail);
-$stmt->execute();
-$result = $stmt->get_result();
-
-if ($result && $result->num_rows > 0) {
-    $userData = $result->fetch_assoc();
-
-    $name = $userData['full_name'];
-    $email = $userData['email'];
-    $snum = $userData['student_number'];
-    $yearLevel = $userData['year_level'];
-    $section = $userData['section'];
-    $MembershipStatus = $userData['membership_status'];
-    $joined = date("F Y", strtotime($userData['created_at']));
-} else {
-    // Default fallback values
-    $name = "John Doe";
-    $email = "jondoe@gmail.com";
-    $yearLevel = "3rd Year";
-    $profilePhoto = "default-avatar.png";
-    $MembershipStatus = "Inactive";
-    $joined = "January 2025";
-}
-?>
-
-
   <div class="profile-container">
 
     <h2>User Profile</h2>
 
-    <img
-      src="sadwolf.jpg"
-      alt="Profile Photo"
-      class="profile-photo"
-      id="profilePhoto"
+    <img src="sadwolf.jpg" alt="Profile Photo"
+      class="profile-photo" id="profilePhoto"
     />
 
     <div class="profile-info">
@@ -252,6 +249,7 @@ if ($result && $result->num_rows > 0) {
       <p><strong>Email:</strong> <?php echo htmlspecialchars($email ?? 'jondoe@gmail.com'); ?></p>
       <p><strong>Year Level:</strong> <?php echo htmlspecialchars($yearLevel ?? '3rd Year'); ?></p>
       <p><strong>Section:</strong> <?php echo htmlspecialchars($section ?? 'A'); ?></p>
+      <p><strong>Joined:</strong>May 2025</p>
 
     </div>
 
