@@ -21,18 +21,16 @@
             <label for="section">SECTION:</label>
             <input type="text" id="section" name="section" required>
 
-            <a href="#" class="payment-link">Available Payment Methods</a>
+
             <div class="upload-box">
                 <p>UPLOAD PDF, PNG, JPG FILE</p>
 
                 <input type="file" id="fileUpload" name="fileUpload" accept=".pdf, .png, .jpg, .jpeg">
                 <label for="fileUpload" class="custom-upload-label">Choose File</label>
             </div>
-
+            <button type="submit">Submit</button>
 
         </form>
-
-        <button class="back-btn" onclick="history.back()">←</button>
     </div>
 
     <script src="membership2.js"></script>

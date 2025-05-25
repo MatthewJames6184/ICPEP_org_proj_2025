@@ -27,3 +27,13 @@ document.getElementById("uploadBtn").addEventListener("click", function () {
 });
 
 });
+
+document.getElementById("membershipForm").addEventListener("submit", function (e) {
+    e.preventDefault(); // Prevent actual form submission
+
+    // Show the popup message
+    alert("You are verified!");
+
+    // Optional: Clear the form
+    this.reset();
+});
