@@ -1,3 +1,48 @@
+<?php
+session_start(); // Always start the session
+
+include('conn.php');
+
+// Check if user is logged in
+if (!isset($_SESSION['user_email'])) {
+    header("Location: login.php");
+    exit();
+}
+
+$userEmail = $_SESSION['user_email'];
+
+// Fetch user data
+$sql = "SELECT CONCAT(user_fname, ' ', user_lname) AS full_name, user_email, user_yearlevel, profile_photo, membership_status, created_at 
+        FROM users 
+        WHERE user_email = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("s", $userEmail);
+$stmt->execute();
+$result = $stmt->get_result();
+
+if ($result && $result->num_rows > 0) {
+    $userData = $result->fetch_assoc();
+
+    $name = $userData['full_name'];
+    $email = $userData['user_email'];
+    $yearLevel = $userData['user_yearlevel'];
+    $profilePhoto = $userData['profile_photo'];
+    $MembershipStatus = $userData['membership_status'];
+    $joined = date("F Y", strtotime($userData['created_at']));
+} else {
+    // Default fallback values
+    $name = "John Doe";
+    $email = "jondoe@gmail.com";
+    $yearLevel = "3rd Year";
+    $profilePhoto = "default-avatar.png";
+    $MembershipStatus = "Inactive";
+    $joined = "January 2025";
+}
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -166,7 +211,7 @@
 
     <!-- Profile Photo -->
     <img
-      src="<?php echo !empty($profilePhoto) ? htmlspecialchars($profilePhoto) : 'default-avatar.png'; ?>"
+      src="<?php echo !empty($profilePhoto) ? htmlspecialchars($profilePhoto) : 'sadwolf.jpg'; ?>"
       alt="Profile Photo"
       class="profile-photo"
       id="profilePhoto"
@@ -185,15 +230,8 @@
     <p class="membership-status <?php echo $isActive ? '' : 'inactive'; ?>">
       Membership Status: <?php echo htmlspecialchars($MembershipStatus ?? 'Inactive'); ?>
     </p>
-    <hr />
 
-    <form action="upload_photo.php" method="POST" enctype="multipart/form-data">
-      <h3>Upload / Change Profile Photo</h3>
-      <label for="profilePhotoUpload">Select Photo</label>
-      <input type="file" id="profilePhotoUpload" name="profilePhoto" accept="image/*" required />
 
-      <input type="submit" value="Upload Photo" />
-    </form>
 
     <!-- Logout Button at the Bottom -->
     <div class="logout-bottom">
