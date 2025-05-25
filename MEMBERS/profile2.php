@@ -1,11 +1,7 @@
 
-
 <?php
 session_start(); // Always start the session
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 
 $db_server = "localhost";	
 $db_user   = "u495515480_ICPEP_dbs";			
@@ -235,13 +231,10 @@ if ($result && $result->num_rows > 0) {
 <body>
 
   <div class="profile-container">
-
     <h2>User Profile</h2>
-
     <img src="sadwolf.jpg" alt="Profile Photo"
       class="profile-photo" id="profilePhoto"
     />
-
     <div class="profile-info">
       <p><strong>Name:</strong> <?php echo htmlspecialchars($name ?? 'John Doe'); ?></p>
       <p><strong>Email:</strong> <?php echo htmlspecialchars($email ?? 'jondoe@gmail.com'); ?></p>
