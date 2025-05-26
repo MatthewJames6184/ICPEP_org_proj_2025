@@ -33,9 +33,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $destination = $uploadDir . $newFileName;
 
                 if (move_uploaded_file($file['tmp_name'], $destination)) {
-                     echo "<script>alert('File successfully uploaded, verifying membership.');</script>";
+    // File uploaded successfully
+    echo "<script>alert('File successfully uploaded, verifying membership.');</script>";
     $success = true;
-                } else {
+
+$db_server = "localhost";	
+$db_user   = "u495515480_ICPEP_dbs";			
+$db_pass   = "icpepElec_se#2025";			
+$db_name   = "u495515480_icpep_web_dbms";
+
+// Create connection
+try {
+    $conn = new mysqli($db_server, $db_user, $db_pass, $db_name);
+    $conn->set_charset("utf8mb4"); // Optional: sets charset for security and compatibility
+} catch (mysqli_sql_exception $e) {
+    // Custom error message (better than just "Connection Unsuccessful")
+    die("Database connection failed: " . $e->getMessage());
+}
+
+    $stmt = $conn->prepare("UPDATE users SET membership_status = 1 WHERE name = ? AND year_level = ? AND section = ?");
+    $stmt->bind_param("sss", $name, $yearLevel, $section);
+
+    if ($stmt->execute()) {
+        echo "<script>alert('Membership status updated.');</script>";
+    } else {
+        echo "<script>alert('Failed to update membership status.');</script>";
+    }
+
+    $stmt->close();
+    $mysqli->close();
+}
+ else {
                     $message = "Failed to save uploaded file.";
                 }
             }
