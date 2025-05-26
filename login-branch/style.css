@@ -145,6 +145,22 @@ button:hover {
   height: auto;
 }
 
+/* Close Button */
+.close-button {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #333;
+  text-decoration: none;
+  z-index: 10;
+}
+
+.close-button:hover {
+  color: #f44336;
+}
+
 @keyframes moveBackground {
   0% {
     background-position: 0% 50%;
