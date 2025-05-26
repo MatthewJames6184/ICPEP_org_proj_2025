@@ -174,8 +174,9 @@ document.addEventListener('DOMContentLoaded', () => {
           voteMessage.textContent = data.message || 'Error submitting vote.';
         }
       })
-      .catch(() => {
+      .catch((e) => {
         voteMessage.textContent = 'Network or server error.';
+        console.error('Fetch error:', err);
       });
     });
   });
