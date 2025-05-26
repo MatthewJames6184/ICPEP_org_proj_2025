@@ -15,7 +15,6 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            
         }
 
         nav {
@@ -86,6 +85,11 @@
                 height: calc(100vh - 50px);
             }
         }
+
+        .disabled {
+            pointer-events: none;
+            opacity: 0.5;
+        }
     </style>
 </head>
 
@@ -95,7 +99,7 @@
         <a href="#" class="nav-item active" data-section="poll2.php">Poll</a>
         <a href="#" class="nav-item" data-section="membership2.php">Membership</a>
         <a href="#" class="nav-item" data-section="announcement2.php">Announcement</a>
-        <a href="voting_form.php" class="nav-item" data-section="voting_form.php">Election</a>
+        <a href="voting_form.php" class="nav-item" data-section="voting_form.php" id="electionLink">Election</a>
         <a href="#" class="nav-item" data-section="profile2.php">Profile</a>
         <img src="icpep name.png" alt="Logo" class="nav-logo" />
     </nav>
@@ -105,6 +109,12 @@
     <script>
         const navItems = document.querySelectorAll('.nav-item');
         const iframe = document.getElementById('contentFrame');
+        const electionLink = document.getElementById('electionLink');
+
+        // Check if the election link has been clicked before
+        if (sessionStorage.getItem('electionClicked')) {
+            electionLink.classList.add('disabled');
+        }
 
         navItems.forEach(item => {
             item.addEventListener('click', e => {
@@ -119,6 +129,12 @@
                 // Load the selected PHP page into the iframe
                 const page = item.getAttribute('data-section');
                 iframe.src = page;
+
+                // Check if the clicked item is the election link
+                if (item === electionLink) {
+                    sessionStorage.setItem('electionClicked', 'true');
+                    electionLink.classList.add('disabled');
+                }
             });
         });
     </script>
