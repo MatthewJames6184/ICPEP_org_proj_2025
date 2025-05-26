@@ -212,6 +212,11 @@ $voted = isset($_SESSION['voted_poll_' . $poll_id]);
 document.addEventListener('DOMContentLoaded', () => {
   const voteButtons = document.querySelectorAll('#vote-buttons button');
   const voteMessage = document.getElementById('vote-message');
+  const voteBtn = document.getElementById('vote-buttons');
+
+  if (voteBtn.onclick){
+    window.location.reload(true); // Reload the page if the buttons are clicked
+  }
 
   voteButtons.forEach(button => {
     button.addEventListener('click', () => {
