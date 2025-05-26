@@ -186,7 +186,7 @@ $voted = isset($_SESSION['voted_poll_' . $poll_id]);
 
 <body>
   <div class="container">
-    <h1>Do you like this poll system?</h1>
+    <h1>Are you ready for OJT?</h1>
 
     <?php if ($voted): ?>
       <p class="voted-msg">Thank you for voting!</p>
