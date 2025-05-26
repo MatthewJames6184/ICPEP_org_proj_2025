@@ -147,12 +147,12 @@ button:hover {
 
 /* Close Button */
 .close-button {
-  position: absolute;
-  top: 20px;
-  right: 25px;
-  font-size: 28px;
+  position: relative;
+  left: 400px;
+  bottom: 120px;
+  font-size: 50px;
   font-weight: bold;
-  color: #333;
+  color: #FFC107;
   text-decoration: none;
   z-index: 10;
 }
