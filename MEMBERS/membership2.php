@@ -76,6 +76,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <!--Josef code start here-->
+<body>
+       <div class="blob-outer-container">
+    <div class="blob-inner-container">
+     <div class="blob"></div>
+</div>
+</div>
 
 <!--ends here-->
 <div class="membership-container">

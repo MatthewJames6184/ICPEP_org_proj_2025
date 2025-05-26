@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" href="/images/logo.png">
     <title>LycanCore Dashboard</title>
+    <link rel="icon" href="/images/logo.png" />
     <style>
         * {
             box-sizing: border-box;
@@ -126,6 +126,14 @@
 
                 // If clicked item is disabled, do nothing
                 if (item.classList.contains('disabled')) return;
+
+                // For election and membership links, show confirmation alert
+                if (item === electionLink || item === membershipLink) {
+                    const confirmed = window.confirm('Are you sure? You can only do this once!');
+                    if (!confirmed) {
+                        return;
+                    }
+                }
 
                 // Remove active class from all
                 navItems.forEach(i => i.classList.remove('active'));
