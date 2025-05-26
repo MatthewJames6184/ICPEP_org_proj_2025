@@ -4,13 +4,14 @@ body {
   padding: 20px;
 background: #0e0837;
   background-size: 600% 600%;
-    height: 100vh;
-    display: grid;
+    min-height: 100vh;
+    display: block;
     place-items: center;
-    overflow: hidden !important;
+    overflow-y: auto;
     position: relative;
 
 }
+
 
 
 .content {
