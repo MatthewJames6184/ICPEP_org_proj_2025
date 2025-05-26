@@ -7,7 +7,12 @@
     <link rel="stylesheet" href="membership2.css">
 </head>
 
-<body>
+<body class="home-page">
+       <div class="blob-outer-container">
+    <div class="blob-inner-container">
+     <div class="blob"></div>
+    </div>
+    </div>
     <div class="membership-container">
         <h1>MEMBERSHIP</h1>
 
