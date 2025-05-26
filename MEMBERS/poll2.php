@@ -1,9 +1,5 @@
 <?php
 session_start();
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 
 // Database connection - replace with your actual credentials
 $servername = "localhost"; // or your server name
@@ -122,7 +118,7 @@ $voted = isset($_SESSION['voted_poll_' . $poll_id]);
 </head>
 <body>
 <div class="container">
-  <h1>Are you ready for OJT? <h1>
+  <h1>Do you like this poll system?</h1>
 
   <?php if ($voted): ?>
     <p class="voted-msg">Thank you for voting!</p>
@@ -166,7 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (data.success) {
           // Replace the vote buttons with results
           container.innerHTML = `
-            <h1>Are you Ready For OJT?</h1>
+            <h1>Do you like this poll system?</h1>
             <p class="voted-msg">Thank you for voting!</p>
             <div class="results-bar">
               <div class="yes-result" style="width: ${data.percent_yes}%">Yes (${data.votes.yes} votes)</div>
@@ -180,10 +176,6 @@ document.addEventListener('DOMContentLoaded', () => {
       })
       .catch(() => {
         voteMessage.textContent = 'Network or server error.';
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
       });
     });
   });
