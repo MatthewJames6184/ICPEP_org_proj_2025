@@ -269,7 +269,7 @@ $voted = isset($_SESSION['voted_poll_' . $poll_id]);
         });
       });
     });
-    F
+    
   </script>
 
 </body>
