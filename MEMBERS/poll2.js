@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
       })
       .catch(() => {
         voteMessage.textContent = 'Network or server error.';
+        window.location.reload();
       });
     });
   });
