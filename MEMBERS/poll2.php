@@ -216,62 +216,44 @@ document.addEventListener('DOMContentLoaded', () => {
   const yesBtn = document.getElementById('yesbtn');
   const noBtn = document.getElementById('notbn'); 
 
-  if (yesBtn.onclick){
-    window.location.reload(true); // Reload the page if the buttons are clicked
-  }
-  if(noBtn.onclick){
-    window.location.reload(true); // Reload the page if the buttons are clicked
-  }
 
-  voteButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      const voteOption = button.getAttribute('data-vote');
+voteButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const voteOption = button.getAttribute('data-vote');
 
-      voteMessage.textContent = 'Submitting your vote...';
-      voteButtons.forEach(btn => btn.disabled = true); // Disable buttons while voting
+    voteMessage.textContent = 'Submitting your vote...';
+    voteButtons.forEach(btn => btn.disabled = true); // Disable buttons while voting
 
-      fetch('', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body: 'vote_option=' + encodeURIComponent(voteOption)
-      })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then(data => {
-        if (data.success) {
-          const container = document.querySelector('.container');
-          const resultHTML = `
-            <h1>Do you like this poll system?</h1>
-            <p class="voted-msg">Thank you for voting!</p>
-            <div class="results-bar">
-              <div class="yes-result" style="width: ${data.percent_yes}%">
-                Yes (${data.votes.yes} votes)
-              </div>
-              <div class="no-result" style="width: ${data.percent_no}%">
-                No (${data.votes.no} votes)
-              </div>
-            </div>
-            <p>Total votes: ${data.total_votes}</p>
-          `;
-          container.innerHTML = resultHTML; // ✅ Replaces the poll with the results
-        } else {
-          voteMessage.textContent = data.message || 'Error submitting vote.';
-          voteButtons.forEach(btn => btn.disabled = false);
-        }
-      })
-      .catch(error => {
-        console.error("Fetch error:", error);
-        voteMessage.textContent = 'Network or server error.';
+    fetch('', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: 'vote_option=' + encodeURIComponent(voteOption)
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then(data => {
+      if (data.success) {
+        // 🔁 Reload the page after a successful vote to show updated results
+        window.location.reload();
+      } else {
+        voteMessage.textContent = data.message || 'Error submitting vote.';
         voteButtons.forEach(btn => btn.disabled = false);
-      });
+      }
+    })
+    .catch(error => {
+      console.error("Fetch error:", error);
+      voteMessage.textContent = 'Network or server error.';
+      voteButtons.forEach(btn => btn.disabled = false);
     });
   });
+});
+
 });
 </script>
 
