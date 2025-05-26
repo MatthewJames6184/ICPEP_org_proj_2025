@@ -122,7 +122,7 @@ $voted = isset($_SESSION['voted_poll_' . $poll_id]);
 </head>
 <body>
 <div class="container">
-  <h1>Do you like this poll system?</h1>
+  <h1>Are you ready for OJT? <h1>
 
   <?php if ($voted): ?>
     <p class="voted-msg">Thank you for voting!</p>
@@ -166,7 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (data.success) {
           // Replace the vote buttons with results
           container.innerHTML = `
-            <h1>Do you like this poll system?</h1>
+            <h1>Are you Ready For OJT?</h1>
             <p class="voted-msg">Thank you for voting!</p>
             <div class="results-bar">
               <div class="yes-result" style="width: ${data.percent_yes}%">Yes (${data.votes.yes} votes)</div>
@@ -180,7 +180,10 @@ document.addEventListener('DOMContentLoaded', () => {
       })
       .catch(() => {
         voteMessage.textContent = 'Network or server error.';
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
       });
     });
   });
