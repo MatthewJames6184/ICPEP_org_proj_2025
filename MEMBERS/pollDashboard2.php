@@ -15,7 +15,6 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            
         }
 
         nav {
@@ -86,6 +85,11 @@
                 height: calc(100vh - 50px);
             }
         }
+
+        .disabled {
+            pointer-events: none;
+            opacity: 0.5;
+        }
     </style>
 </head>
 
@@ -93,9 +97,9 @@
 
     <nav>
         <a href="#" class="nav-item active" data-section="poll2.php">Poll</a>
-        <a href="#" class="nav-item" data-section="membership2.php">Membership</a>
+        <a href="#" class="nav-item" data-section="membership2.php" id="membershipLink">Membership</a>
         <a href="#" class="nav-item" data-section="announcement2.php">Announcement</a>
-        <a href="voting_form.php" class="nav-item" target="_blank">Election</a>
+        <a href="voting_form.php" class="nav-item" data-section="voting_form.php" id="electionLink">Election</a>
         <a href="#" class="nav-item" data-section="profile2.php">Profile</a>
         <img src="icpep name.png" alt="Logo" class="nav-logo" />
     </nav>
@@ -105,10 +109,23 @@
     <script>
         const navItems = document.querySelectorAll('.nav-item');
         const iframe = document.getElementById('contentFrame');
+        const electionLink = document.getElementById('electionLink');
+        const membershipLink = document.getElementById('membershipLink');
+
+        // Disable links on page load if already clicked
+        if (sessionStorage.getItem('electionClicked')) {
+            electionLink.classList.add('disabled');
+        }
+        if (sessionStorage.getItem('membershipClicked')) {
+            membershipLink.classList.add('disabled');
+        }
 
         navItems.forEach(item => {
             item.addEventListener('click', e => {
                 e.preventDefault();
+
+                // If clicked item is disabled, do nothing
+                if (item.classList.contains('disabled')) return;
 
                 // Remove active class from all
                 navItems.forEach(i => i.classList.remove('active'));
@@ -119,6 +136,16 @@
                 // Load the selected PHP page into the iframe
                 const page = item.getAttribute('data-section');
                 iframe.src = page;
+
+                // Record clicks for election and membership and disable
+                if (item === electionLink) {
+                    sessionStorage.setItem('electionClicked', 'true');
+                    electionLink.classList.add('disabled');
+                }
+                if (item === membershipLink) {
+                    sessionStorage.setItem('membershipClicked', 'true');
+                    membershipLink.classList.add('disabled');
+                }
             });
         });
     </script>
@@ -126,3 +153,4 @@
 </body>
 
 </html>
+
