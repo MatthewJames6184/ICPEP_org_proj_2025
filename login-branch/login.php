@@ -19,7 +19,7 @@
 
 	<div class="container multi-class-layout">
 		<div class="form-container">
-			<a href="/ICPEP_org_proj_2025/index.html" class="close-button" title="Close">&times;</a>
+			
 			<div class="profile-container"></div>
 
 			<!-- Error Messages -->
@@ -70,6 +70,7 @@
 
 		<!-- Info Panel -->
 		<div class="info-container">
+			<a href="/index.html" class="close-button" title="Close">&times;</a>
 			<h1>What’s up, Lycan?</h1>
 			<p>
 				Welcome to the official page of ICpEP.SE BulSU, the student chapter of the
