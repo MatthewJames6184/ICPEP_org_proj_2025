@@ -1,192 +1,132 @@
 body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #0e0837;
-  background-size: 600% 600%;
-  color: #333;
+    font-family: Arial, sans-serif;
+    background-color: #f0f4f8;
+    color: #333;
+    margin: 0;
+    padding: 0;
 }
-
-    
-.home-page {
-    background-color: #0e0837;
-    height: 100vh;
-    display: grid;
-    place-items: center;
-    overflow: hidden !important;
-    position: relative;
-}
-
-.content {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    position: relative;
-    z-index: 1;
-}
-
-.content .quote {
-    color: white;
-    font-weight: bold;
-    font-style: italic;
-    font-size: 64px;
-    padding: 10px;
-    background-color: #101010;
-    border-radius: 10px;
-}
-
-.content .by {
-    color: #00e1ff;
-}
-
-.blob-outer-container {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    z-index: -1;
-    inset: 0;
-    margin: auto;
-    filter: blur(100px);
-    /*opacity: 0.5;*/
-}
-
-.blob-inner-container {
-    border-radius: 99999px;
-    position: absolute;
-    inset: 0;
-    margin: auto;
-    width: 100vw;
-    height: 100vh;
-    min-width: 1000px;
-    overflow: hidden;
-    background-color: #fff;
-    transform: scale(0.8);
-}
-
-.blob {
-    position: absolute;
-    width: 100vw;
-    height: 100vh;
-    inset: 0;
-    margin: auto;
-    background: conic-gradient(from 0deg, #08f, rgb(16, 33, 74), #26f1ff, #4c00ff, #3e0d87, #09f);
-    animation: spinBlob 8s linear infinite;
-}
-
-@keyframes spinBlob {
-    0% {
-        transform: rotate(0deg) scale(2);
-    }
-
-    100% {
-        transform: rotate(1turn) scale(2);
-    }
-}
-
-
 
 .membership-container {
-  background-color: white;
-  padding: 30px;
-  border-radius: 10px;
-  width: 100%;
-  max-width: 500px;
-  margin: 40px auto;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
-  margin-bottom: 20px;
-  font-size: 24px;
-  color: #004080;
-  text-align: center;
+    color: #004080;
+    text-align: center;
+    margin-bottom: 25px;
 }
 
 label {
-  display: block;
-  margin: 12px 0 6px;
-  font-weight: bold;
-  color: #004080;
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #004080;
 }
 
-input[type="text"],
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+/* Hide the default file input */
 input[type="file"] {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  margin-bottom: 10px;
-  font-size: 14px;
-  box-sizing: border-box;
-}
-
-.payment-link {
-  display: block;
-  margin: 14px 0;
-  color: #0066cc;
-  font-weight: bold;
-  text-decoration: underline;
-  text-align: center;
+    display: none;
 }
 
 .upload-box {
-  background-color: #f9f9f9;
-  color: #333;
-  padding: 20px;
-  border-radius: 10px;
-  margin-top: 20px;
-  text-align: center;
-  border: 1px dashed #ccc;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 2px dashed #004080;
+    border-radius: 8px;
+    text-align: center;
+    background-color: #f9fcff;
 }
 
 .upload-box p {
-  margin-bottom: 10px;
-  font-weight: bold;
-  color: #555;
-}
-
-#fileUpload {
-  display: none;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #004080;
 }
 
 .custom-upload-label {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #004080;
-  color: white;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 14px;
-  transition: background-color 0.3s;
+    display: inline-block;
+    margin-top: 10px;
+    background-color: #004080;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    user-select: none;
 }
 
 .custom-upload-label:hover {
-  background-color: #0066cc;
+    background-color: #003366;
 }
 
-.back-btn {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  background: none;
-  border: none;
-  color: #004080;
-  font-size: 20px;
-  cursor: pointer;
+.payment-link {
+    display: inline-block;
+    margin-bottom: 15px;
+    color: #004080;
+    text-decoration: underline;
+    cursor: pointer;
 }
 
-#submit {
-    background-color: #007BFF; /* Bootstrap Blue */
-    color: white;
-    padding: 10px 20px;
+.payment-link:hover {
+    color: #002b5e;
+}
+
+.submit-btn {
+    width: 100%;
+    background-color: #004080;
+    color: #fff;
+    padding: 12px;
     border: none;
     border-radius: 6px;
     font-size: 16px;
     cursor: pointer;
-    display: block;
-    margin: 20px auto; /* ✅ Center the button */
-    transition: background-color 0.3s ease;
 }
 
-#submit:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+.submit-btn:hover {
+    background-color: #003366;
+}
+
+.message {
+    background-color: #e0f2ff;
+    color: #004080;
+    border: 1px solid #b3e0ff;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.file-preview {
+    margin-top: 10px;
+}
+
+.file-preview a {
+    display: inline-block;
+    margin-top: 10px;
+    color: #004080;
+    text-decoration: underline;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.file-preview iframe,
+.file-preview img {
+    display: block;
+    margin-top: 10px;
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ccc;
 }
