@@ -2,7 +2,6 @@ const sections = {
   poll: 'poll2.php',
   membership: 'membership2.php',
   announcement: 'announcement2.php',
-  election: 'voting_form.php',
   profile: 'profile2.php',
 };
 
