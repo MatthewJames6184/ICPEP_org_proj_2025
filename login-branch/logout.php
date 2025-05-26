@@ -12,6 +12,6 @@ if (ini_get("session.use_cookies")) {
     );
 }
 
-header("Location: /index.html");
+echo '<script>top.location.href = "/index.html";</script>';
 exit();
 ?>

@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="/images/logo.png">
-    <title>Admin Dashboard</title>
+    <title>LycanCore Dashboard</title>
     <style>
         * {
             box-sizing: border-box;
