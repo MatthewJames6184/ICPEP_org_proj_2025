@@ -11,7 +11,7 @@ include ('database.php'); // Include the database connection file
     <title>Document</title>
 </head>
 <body>
-    <h1>tulog muna, bukas naman alang net e pusang gala</h1>
+    <h1>yummy_dash dash</h1>
     <div class="logout_containter">
         <form method="POST" action="logout.php">
             <input type="submit" value="Logout" class="logout_btn">
