@@ -19,7 +19,7 @@
 
 	<div class="container multi-class-layout">
 		<div class="form-container">
-			<a href="/ICPEP_org_proj_2025/index.html" class="close-button" title="Close">&times;</a>
+			<a href="/index.html" class="close-button" title="Close">&times;</a>
 			<div class="profile-container"></div>
 
 			<!-- Error Messages -->
