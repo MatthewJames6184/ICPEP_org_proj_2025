@@ -25,7 +25,7 @@ if (!$studentNumber) {
 
 $sql = "SELECT CONCAT(first_name, ' ', last_name) AS full_name, email, year_level, section, membership_status
         FROM user_account 
-        WHERE username = ?";
+        WHERE student_number = ?";
 
 
 $stmt = $conn->prepare($sql);
