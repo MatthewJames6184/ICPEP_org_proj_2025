@@ -208,35 +208,35 @@ $voted = isset($_SESSION['voted_poll_' . $poll_id]);
     <?php endif; ?>
   </div>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const voteButtons = document.querySelectorAll('#vote-buttons button');
-      const voteMessage = document.getElementById('vote-message');
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const voteButtons = document.querySelectorAll('#vote-buttons button');
+  const voteMessage = document.getElementById('vote-message');
 
-      voteButtons.forEach(button => {
-        button.addEventListener('click', () => {
-          const voteOption = button.getAttribute('data-vote');
+  voteButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const voteOption = button.getAttribute('data-vote');
 
-          voteMessage.textContent = 'Submitting your vote...';
-          voteButtons.forEach(btn => btn.disabled = true); // Disable buttons while voting
+      voteMessage.textContent = 'Submitting your vote...';
+      voteButtons.forEach(btn => btn.disabled = true); // Disable buttons while voting
 
-          fetch('', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-              },
-              body: 'vote_option=' + encodeURIComponent(voteOption)
-            })
-            .then(response => {
-              if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-              }
-              return response.json();
-            })
-            .then(data => {
-              if (data.success) {
-                const container = document.querySelector('.container');
-                const resultHTML = `
+      fetch('', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: 'vote_option=' + encodeURIComponent(voteOption)
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then(data => {
+        if (data.success) {
+          const container = document.querySelector('.container');
+          const resultHTML = `
             <h1>Do you like this poll system?</h1>
             <p class="voted-msg">Thank you for voting!</p>
             <div class="results-bar">
@@ -249,21 +249,21 @@ $voted = isset($_SESSION['voted_poll_' . $poll_id]);
             </div>
             <p>Total votes: ${data.total_votes}</p>
           `;
-                container.innerHTML = resultHTML; // ✅ Replaces the poll with the results
-              } else {
-                voteMessage.textContent = data.message || 'Error submitting vote.';
-                voteButtons.forEach(btn => btn.disabled = false);
-              }
-            })
-            .catch(error => {
-              console.error("Fetch error:", error);
-              voteMessage.textContent = 'Network or server error.';
-              voteButtons.forEach(btn => btn.disabled = false);
-            });
-        });
+          container.innerHTML = resultHTML; // ✅ Replaces the poll with the results
+        } else {
+          voteMessage.textContent = data.message || 'Error submitting vote.';
+          voteButtons.forEach(btn => btn.disabled = false);
+        }
+      })
+      .catch(error => {
+        console.error("Fetch error:", error);
+        voteMessage.textContent = 'Network or server error.';
+        voteButtons.forEach(btn => btn.disabled = false);
       });
     });
-  </script>
+  });
+});
+</script>
 
 
 </body>
