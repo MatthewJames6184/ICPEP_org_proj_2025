@@ -40,6 +40,11 @@ $conn->close();
     <link rel="stylesheet" href="styleV.css">
 </head>
 <body>
+       <div class="blob-outer-container">
+    <div class="blob-inner-container">
+     <div class="blob"></div>
+</div>
+</div>
 <div class="container">
     <img src="logo.png" alt="" id="icon">
     <h1>ICpEP.SE Officers Voting Form</h1>
