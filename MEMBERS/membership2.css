@@ -53,6 +53,8 @@ input[type="file"] {
     border-radius: 8px;
     text-align: center;
     background-color: #f9fcff;
+    position: relative;
+    overflow: hidden; /* Prevent image overflow */
 }
 
 .upload-box p {
@@ -115,7 +117,10 @@ input[type="file"] {
 
 .file-preview {
     margin-top: 10px;
+    max-width: 100%;   /* Limit width to container */
     height: 200px;
+    overflow: hidden;  /* Prevent overflow */
+    box-sizing: border-box;
 }
 
 .file-preview a {
@@ -149,7 +154,7 @@ select {
     font-size: 14px;
     background-color: #fff;
     color: #333;
-    appearance: none; /* Removes default arrow styling (optional, for custom arrows) */
+    appearance: none; /* Removes default arrow styling */
 }
 
 select:focus {
@@ -157,4 +162,3 @@ select:focus {
     border-color: #004080;
     box-shadow: 0 0 5px rgba(0, 64, 128, 0.5);
 }
-
