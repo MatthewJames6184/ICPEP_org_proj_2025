@@ -52,11 +52,10 @@ Introducing your 𝗪𝗢𝗥𝗟𝗗 𝗖𝗛𝗔𝗠𝗣𝗜𝗢𝗡𝗦:
   padding: 20px;
 background: #0e0837;
   background-size: 600% 600%;
-  animation: gradientMove 7s ease infinite;
-    height: 100vh;
+    min-height: 100vh;
     display: grid;
     place-items: center;
-    overflow: hidden !important;
+    overflow: auto !important;
     position: relative;
 }
 
@@ -165,7 +164,11 @@ background: #0e0837;
   </style>
 </head>
 <body>
-
+   <div class="blob-outer-container">
+    <div class="blob-inner-container">
+     <div class="blob"></div>
+</div>
+</div>
 <div id="content-area">
   <?php if (count($announcements) > 0): ?>
     <!-- First announcement -->

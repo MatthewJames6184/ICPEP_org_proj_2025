@@ -69,10 +69,10 @@ if ($result && $result->num_rows > 0) {
       min-height: 100vh;
     background: #0e0837;
     background-size: 600% 600%;
-    height: 100vh;
+    min-height: 100vh;
     display: grid;
     place-items: center;
-    overflow: hidden !important;
+    overflow: auto !important;
     position: relative;
     }
 
