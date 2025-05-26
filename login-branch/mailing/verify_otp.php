@@ -44,7 +44,7 @@ if ($otp == $_SESSION['otp']) {
     $stmt->bind_param("sssssss", $studNo,  $email, $password, $firstName, $lastName, $yearLevel, $section);
     if ($stmt->execute()) {
         unset($_SESSION['otp'], $_SESSION['otp_expiry']);
-        echo json_encode(['verified' => true]);
+        echo json_encode(['verified' => true, 'redirect' => '/MEMBERS/pollDashboard2.php']);
     } else {
         echo json_encode(['verified' => false, 'error' => 'Database error.']);
     }
