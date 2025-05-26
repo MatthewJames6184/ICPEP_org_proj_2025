@@ -72,7 +72,7 @@ if ($result && $result->num_rows > 0) {
     min-height: 100vh;
     display: grid;
     place-items: center;
-    overflow: auto !important;
+    overflow: auto;
     position: relative;
     }
 
