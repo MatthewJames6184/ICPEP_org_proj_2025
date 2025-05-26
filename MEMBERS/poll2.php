@@ -248,7 +248,8 @@ voteButtons.forEach(button => {
     })
     .catch(error => {
       console.error("Fetch error:", error);
-      voteMessage.textContent = 'Network or server error.';
+      window.location.reload(); // Reload the page on error
+      
       voteButtons.forEach(btn => btn.disabled = false);
     });
   });
