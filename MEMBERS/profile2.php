@@ -235,7 +235,7 @@ if ($result && $result->num_rows > 0) {
       <p><strong>Email:</strong> <?php echo htmlspecialchars($email ?? 'jondoe@gmail.com'); ?></p>
       <p><strong>Year Level:</strong> <?php echo htmlspecialchars($yearLevel ?? '3rd Year'); ?></p>
       <p><strong>Section:</strong> <?php echo htmlspecialchars($section ?? 'A'); ?></p>
-      <p><strong>Joined:</strong>May 2025</p>
+      <p><strong>Joined: </strong>May 2025</p>
 
     </div>
 
