@@ -70,7 +70,7 @@ if ($result && $result->num_rows > 0) {
     background: #0e0837;
     background-size: 600% 600%;
     min-height: 100vh;
-    display: grid;
+    display: block;
     place-items: center;
     overflow: auto;
     position: relative;
@@ -150,8 +150,8 @@ if ($result && $result->num_rows > 0) {
       padding: 40px 50px 50px 50px;
       border-radius: 15px;
       box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
-      max-width: 800px;
-      width: 100%;
+      min-width: 800px;
+      width: 90vw;
       overflow-y: auto;
       max-height: 90vh;
       box-sizing: border-box;
@@ -309,8 +309,6 @@ if ($result && $result->num_rows > 0) {
     <p class="membership-status <?php echo $isActive ? '' : 'inactive'; ?>">
       Membership Status: <?php echo htmlspecialchars($MembershipStatus ?? 'Inactive'); ?>
     </p>
-
-
 
     <!-- Logout Button at the Bottom -->
     <div class="logout-bottom">
