@@ -6,6 +6,7 @@ body {
     padding: 0;
     background-size: 600% 600%;
     min-height: 100vh;
+    overflow-y: auto;
 }
 
 .membership-container {
@@ -15,6 +16,7 @@ body {
     padding: 30px;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: visible;
 }
 
 h1 {
@@ -113,6 +115,7 @@ input[type="file"] {
 
 .file-preview {
     margin-top: 10px;
+    height: 400px;
 }
 
 .file-preview a {
