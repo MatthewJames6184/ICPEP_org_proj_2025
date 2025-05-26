@@ -9,9 +9,10 @@ background: #0e0837;
     place-items: center;
     overflow-y: auto;
     position: relative;
+  height: auto;
+overflow: auto;
 
 }
-
 
 
 .content {
