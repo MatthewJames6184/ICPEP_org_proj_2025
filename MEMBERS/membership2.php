@@ -101,8 +101,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <label for="fileUpload" class="custom-upload-label">Choose File</label>
                 <div id="filePreview" class="file-preview"></div>
             </div>
-
-            <input type="submit" id="submit" value="Submit">
         <button type="submit" class="submit-btn">Submit</button>
 
         </form>
