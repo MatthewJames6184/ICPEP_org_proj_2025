@@ -201,8 +201,8 @@ $voted = isset($_SESSION['voted_poll_' . $poll_id]);
       <p>Total votes: <?= $total_votes ?></p>
     <?php else: ?>
       <div id="vote-buttons">
-        <button class="btn-yes" data-vote="yes">Yes</button>
-        <button class="btn-no" data-vote="no">No</button>
+        <button class="btn-yes" data-vote="yes" id="yesbtn">Yes</button>
+        <button class="btn-no" data-vote="no" id="notbn">No</button>
       </div>
       <div id="vote-message" style="margin-top: 15px; font-weight:600;"></div>
     <?php endif; ?>
@@ -213,8 +213,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const voteButtons = document.querySelectorAll('#vote-buttons button');
   const voteMessage = document.getElementById('vote-message');
   const voteBtn = document.getElementById('vote-buttons');
+  const yesBtn = document.getElementById('yesbtn');
+  const noBtn = document.getElementById('notbn'); 
 
-  if (voteBtn.onclick){
+  if (yesBtn.onclick){
+    window.location.reload(true); // Reload the page if the buttons are clicked
+  }
+  if(noBtn.onclick){
     window.location.reload(true); // Reload the page if the buttons are clicked
   }
 
