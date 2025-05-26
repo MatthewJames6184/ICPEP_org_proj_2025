@@ -1,5 +1,9 @@
 <?php
 session_start();
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 
 // Database connection - replace with your actual credentials
 $servername = "localhost"; // or your server name
@@ -174,9 +178,9 @@ document.addEventListener('DOMContentLoaded', () => {
           voteMessage.textContent = data.message || 'Error submitting vote.';
         }
       })
-      .catch((e) => {
+      .catch(() => {
         voteMessage.textContent = 'Network or server error.';
-        console.error('Fetch error:', err);
+
       });
     });
   });
