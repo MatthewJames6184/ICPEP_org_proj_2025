@@ -46,6 +46,7 @@ if ($result && $result->num_rows > 0) {
     $name = "John Doe";
     $email = "jondoe@gmail.com";
     $yearLevel = "3rd Year";
+    $section = 'A';
     $profilePhoto = "default-avatar.png";
     $MembershipStatus = "Inactive";
     $joined = "May 2025";

@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       if (passwordInput.value.length < 8) {
-        passwordError.textContent = "Password must be at least 8 characters.";
+        passwordError.textContent = "Incorrect Password.";
         valid = false;
       }
 

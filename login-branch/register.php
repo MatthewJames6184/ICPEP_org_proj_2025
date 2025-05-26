@@ -73,11 +73,11 @@
 			<div class="input-group">
 				<label for="user_section">Section:</label>
 				<select name="user_section" id="user_section" required>
-					<option value="">-- Select Section --</option>
-					<option value="CpE-3A">A</option>
-					<option value="CpE-3B">B</option>
-					<option value="CpE-3C">C</option>
-					<option value="CpE-3D">D</option>
+					<option>-- Select Section --</option>
+					<option>A</option>
+					<option>B</option>
+					<option>C</option>
+					<option>D</option>
 				</select>
 			</div>
 

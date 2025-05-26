@@ -36,8 +36,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!passwordValid) {
       mark("user_password");
-      passwordError.textContent = "Password must be 8+ chars, with uppercase, number, and special character.";
-      errors.push("Password must be 8+ chars, with uppercase, number, and special character.");
+      passwordError.textContent = "Password must be 8+ chars, w/ uppercase, number, and special character. Ex. 'abC#123'";
+      errors.push("Password must be 8+ chars, with uppercase, number, and special character. Ex. 'abC#123'");
     } else if (!confirmPasswordValid) {
       mark("user_confirmPassword");
       confirmPasswordError.textContent = "Passwords do not match.";
