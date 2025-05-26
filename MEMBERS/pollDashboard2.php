@@ -129,7 +129,7 @@
 
                 // For election and membership links, show confirmation alert
                 if (item === electionLink || item === membershipLink) {
-                    const confirmed = window.confirm('Are you sure? You can only do this once!');
+                    const confirmed = window.confirm('Are you sure? You can only access this tab this once!');
                     if (!confirmed) {
                         return;
                     }
