@@ -209,39 +209,35 @@ $voted = isset($_SESSION['voted_poll_' . $poll_id]);
   </div>
 
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const voteButtons = document.querySelectorAll('#vote-buttons button');
-      const voteMessage = document.getElementById('vote-message');
+   
+      document.addEventListener('DOMContentLoaded', () => {
+        const voteButtons = document.querySelectorAll('#vote-buttons button');
+        const voteMessage = document.getElementById('vote-message');
 
-      voteButtons.forEach(button => {
-        button.addEventListener('click', () => {
-          const voteOption = button.getAttribute('data-vote');
+        voteButtons.forEach(button => {
+          button.addEventListener('click', () => {
+            const voteOption = button.getAttribute('data-vote');
 
-          console.log("User clicked:", voteOption); // ✅ Debug
+            voteMessage.textContent = 'Submitting your vote...';
+            voteButtons.forEach(btn => btn.disabled = true); // Disable buttons while voting
 
-          voteMessage.textContent = 'Submitting your vote...';
-          voteButtons.forEach(btn => btn.disabled = true); // Disable while submitting
-
-          fetch('', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-              },
-              body: 'vote_option=' + encodeURIComponent(voteOption)
-            })
-            .then(response => {
-              console.log("Raw fetch response:", response);
-              if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-              }
-              return response.json();
-            })
-            .then(data => {
-              console.log("Parsed response data:", data);
-
-              if (data.success) {
-                const container = document.querySelector('.container');
-                const resultHTML = `
+            fetch('', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: 'vote_option=' + encodeURIComponent(voteOption)
+              })
+              .then(response => {
+                if (!response.ok) {
+                  throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+              })
+              .then(data => {
+                if (data.success) {
+                  const container = document.querySelector('.container');
+                  const resultHTML = `
             <h1>Do you like this poll system?</h1>
             <p class="voted-msg">Thank you for voting!</p>
             <div class="results-bar">
@@ -252,24 +248,22 @@ $voted = isset($_SESSION['voted_poll_' . $poll_id]);
                 No (${data.votes.no} votes)
               </div>
             </div>
-            <p>Total votes: ${data.total_votes}</p>
-          `;
-                container.innerHTML = resultHTML;
-              } else {
-                voteMessage.textContent = data.message || 'Error submitting vote.';
-                console.warn("Vote failed with message:", data.message);
+            <p>Total votes: ${data.total_votes}</p>`;
+                  container.innerHTML = resultHTML; // ✅ Replaces the poll with the results
+                } else {
+                  voteMessage.textContent = data.message || 'Error submitting vote.';
+                  voteButtons.forEach(btn => btn.disabled = false);
+                }
+              })
+              .catch(error => {
+                console.error("Fetch error:", error);
+                voteMessage.textContent = 'Network or server error.';
                 voteButtons.forEach(btn => btn.disabled = false);
-              }
-            })
-            .catch(error => {
-              console.error("Fetch error:", error);
-              voteMessage.textContent = 'Network or server error.';
-              voteButtons.forEach(btn => btn.disabled = false);
-            });
+              });
+          });
         });
       });
-    });
-    
+
   </script>
 
 </body>
