@@ -109,7 +109,7 @@
         const userEmail = "<?php echo isset($_SESSION['user_email']) ? $_SESSION['user_email'] : ''; ?>";
         const otpExpiry = <?php echo isset($_SESSION['otp_expiry']) ? $_SESSION['otp_expiry'] : 'null'; ?>;
     </script>
-    <script src="otp_verification.js"></script>
+    <script src="otp_verification.js?v=2"></script>
 </body>
 
 </html>
