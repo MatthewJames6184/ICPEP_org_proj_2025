@@ -33,8 +33,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $destination = $uploadDir . $newFileName;
 
                 if (move_uploaded_file($file['tmp_name'], $destination)) {
-                    $message = "Upload successful! Name: $name, Year Level: $yearLevel, Section: $section";
-                    $success = true;
+                     echo "<script>alert('File successfully uploaded, verifying membership.');</script>";
+    $success = true;
                 } else {
                     $message = "Failed to save uploaded file.";
                 }
@@ -85,14 +85,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <p class="message"><?php echo $message; ?></p>
     <?php endif; ?>
 
-    <?php if (isset($success) && $success): ?>
-        <script>
-            alert("File successfully uploaded, verifying membership.");
-        </script>
-    <?php endif; ?>
 
 
-    <form id="membershipForm" method="POST" enctype="multipart/form-data" action="upload.php">
+    <form id="membershipForm" method="POST" enctype="multipart/form-data" action="">
         <label for="name">NAME:</label>
         <input type="text" id="name" name="name" required>
 
