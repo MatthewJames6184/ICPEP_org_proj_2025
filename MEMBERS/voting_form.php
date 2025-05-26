@@ -39,7 +39,7 @@ $conn->close();
     <title>LycanCore Voting Form</title>
     <link rel="stylesheet" href="styleV.css">
 </head>
-<body>
+<body class="home-page">
        <div class="blob-outer-container">
     <div class="blob-inner-container">
      <div class="blob"></div>
