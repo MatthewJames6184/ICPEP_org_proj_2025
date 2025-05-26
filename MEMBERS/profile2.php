@@ -308,7 +308,7 @@ if ($result && $result->num_rows > 0) {
       $isActive = isset($MembershipStatus) && strtolower($MembershipStatus) === 'active';
     ?>
     <p class="membership-status <?php echo $isActive ? '' : 'inactive'; ?>">
-      Membership Status: <?php echo htmlspecialchars($MembershipStatus ?? 'Inactive'); ?>
+      Membership Status: <?php echo ($MembershipStatus ?? 0) == 1 ? 'Active' : 'Inactive'; ?>
     </p>
 
     <!-- Logout Button at the Bottom -->
