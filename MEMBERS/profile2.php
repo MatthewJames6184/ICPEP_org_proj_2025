@@ -150,7 +150,7 @@ if ($result && $result->num_rows > 0) {
       padding: 40px 50px 50px 50px;
       border-radius: 15px;
       box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
-      min-width: 800px;
+      min-width: 600px;
       width: 90vw;
       overflow-y: auto;
       max-height: 90vh;
