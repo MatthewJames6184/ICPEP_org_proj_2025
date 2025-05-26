@@ -1,8 +1,14 @@
   body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: #0e0837;
     box-sizing: border-box;
+    display: block;
+    place-items: center;
+    overflow-y: auto;
+    position: relative;
+  height: auto;
+overflow: auto;
   }
 
   *,
@@ -10,6 +16,74 @@
   *:after {
     box-sizing: inherit;
   }
+
+
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    position: relative;
+    z-index: 1;
+}
+
+.content .quote {
+    color: white;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 64px;
+    padding: 10px;
+    background-color: #101010;
+    border-radius: 10px;
+}
+
+.content .by {
+    color: #00e1ff;
+}
+
+.blob-outer-container {
+    position: fixed; /* So it sticks to the screen */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    filter: blur(100px);
+    pointer-events: none; /* Ensures it's non-interactive */
+}
+
+.blob-inner-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh; /* Keep it to screen height */
+    background-color: #fff;
+    overflow: hidden;
+    border-radius: 99999px;
+    transform: scale(0.8);
+}
+
+.blob {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: conic-gradient(from 0deg, #08f, rgb(16, 33, 74), #26f1ff, #4c00ff, #7123e7, #09f);
+    animation: spinBlob 8s linear infinite;
+}
+
+
+@keyframes spinBlob {
+    0% {
+        transform: rotate(0deg) scale(2);
+    }
+
+    100% {
+        transform: rotate(1turn) scale(2);
+    }
+}
 
   .container {
     max-width: 700px;
