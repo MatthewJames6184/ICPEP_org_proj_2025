@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (data.verified) {
             otpSuccess.textContent = 'OTP verified! Redirecting...';
             setTimeout(() => {
-                window.location.href = '../dashboard_dummy.php';
+                window.location.href = '/MEMBERS/pollDashboard2.php';
             }, 1500);
         } else {
             otpError.textContent = data.error || 'Invalid OTP.';
