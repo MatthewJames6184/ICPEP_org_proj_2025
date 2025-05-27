@@ -14,16 +14,34 @@ $sql = "SELECT position, name, votes FROM candidates
 
 $result = $conn->query($sql);
 
-echo "<h1>Live Vote Count</h1>";
 $currentPosition = "";
-
-while ($row = $result->fetch_assoc()) {
-    if ($currentPosition != $row['position']) {
-        $currentPosition = $row['position'];
-        echo "<h2>" . htmlspecialchars($currentPosition) . "</h2>";
-    }
-    echo "<p>" . htmlspecialchars($row['name']) . " — " . $row['votes'] . " votes</p>";
-}
-
-$conn->close();
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Vote Counts</title>
+    <link rel="stylesheet" href="styleV.css" />
+</head>
+<body>
+<div class="container">
+    <h1>Live Vote Count</h1>
+
+    <?php while ($row = $result->fetch_assoc()): ?>
+        <?php if ($currentPosition != $row['position']): ?>
+            <?php if ($currentPosition !== ""): ?>
+                </div> <!-- close previous position -->
+            <?php endif; ?>
+            <?php $currentPosition = $row['position']; ?>
+            <div class="position">
+                <h2><?= htmlspecialchars($currentPosition) ?></h2>
+        <?php endif; ?>
+        <p><?= htmlspecialchars($row['name']) ?> — <span class="highlight"><?= $row['votes'] ?></span> votes</p>
+    <?php endwhile; ?>
+    </div> <!-- close last position -->
+</div>
+</body>
+</html>
+
+<?php $conn->close(); ?>
