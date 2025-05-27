@@ -112,10 +112,16 @@
         const iframe = document.getElementById('contentFrame');
         const electionLink = document.getElementById('electionLink');
         const membershipLink = document.getElementById('membershipLink');
+        const viewVotesLink = [...navItems].find(item => item.getAttribute('data-section') === 'get_votes.php');
+
+        // Disable View Votes initially
+        viewVotesLink.classList.add('disabled');
 
         // Disable links on page load if already clicked
         if (sessionStorage.getItem('electionClicked')) {
             electionLink.classList.add('disabled');
+            // Enable View Votes since election was clicked
+            viewVotesLink.classList.remove('disabled');
         }
         if (sessionStorage.getItem('membershipClicked')) {
             membershipLink.classList.add('disabled');
@@ -150,6 +156,8 @@
                 if (item === electionLink) {
                     sessionStorage.setItem('electionClicked', 'true');
                     electionLink.classList.add('disabled');
+                    // Enable View Votes tab after election is clicked
+                    viewVotesLink.classList.remove('disabled');
                 }
                 if (item === membershipLink) {
                     sessionStorage.setItem('membershipClicked', 'true');
@@ -162,4 +170,3 @@
 </body>
 
 </html>
-
