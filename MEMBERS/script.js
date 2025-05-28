@@ -27,6 +27,7 @@ document.getElementById('votingForm').addEventListener('submit', function (e) {
 
     if (!valid) e.preventDefault();
 });
+
 function fetchVotes() {
     console.log("Fetching votes..."); // NEW
     fetch('get_votes.php')
@@ -43,3 +44,9 @@ function fetchVotes() {
 
 setInterval(fetchVotes, 5000);
 fetchVotes();
+
+// Disable back button functionality
+history.pushState(null, null, location.href);
+window.addEventListener('popstate', function(event) {
+    history.pushState(null, null, location.href);
+});
