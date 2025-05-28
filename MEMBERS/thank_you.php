@@ -96,6 +96,15 @@ if (isset($_SESSION['voted']) && is_array($_SESSION['voted'])) {
     Download Voting Results as PDF
   </a>
 </div>
+
+<script>
+    // Prevent back navigation on the Thank You page
+    history.pushState(null, null, location.href);
+    window.addEventListener('popstate', function(event) {
+        // Do nothing on back button press
+        history.pushState(null, null, location.href);
+    });
+</script>
 </body>
 </html>
 
