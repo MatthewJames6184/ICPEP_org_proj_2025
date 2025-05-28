@@ -45,8 +45,8 @@ function fetchVotes() {
 setInterval(fetchVotes, 5000);
 fetchVotes();
 
-// Disable back button functionality
+// Make back button refresh current page instead of navigating back
 history.pushState(null, null, location.href);
 window.addEventListener('popstate', function(event) {
-    history.pushState(null, null, location.href);
+    location.reload();
 });
