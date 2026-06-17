@@ -17,18 +17,25 @@ $otp = rand(100000, 999999);
 $_SESSION['otp'] = $otp;
 $_SESSION['otp_expiry'] = time() + 300; // 5 minutes
 
+$gmailUsername = getenv('GMAIL_USERNAME') ?: '';
+$gmailPassword = getenv('GMAIL_PASSWORD') ?: '';
+if (!$gmailUsername || !$gmailPassword) {
+    echo json_encode(['success' => false, 'error' => 'Email service is not configured.']);
+    exit;
+}
+
 $mail = new PHPMailer(true);
 
 try {
     $mail->isSMTP();
     $mail->Host       = 'smtp.gmail.com';
     $mail->SMTPAuth   = true;
-    $mail->Username   = ''; // Your Gmail
-    $mail->Password   = '';    // Your Gmail App Password
+    $mail->Username   = $gmailUsername;
+    $mail->Password   = $gmailPassword;
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
     $mail->Port       = 587;
 
-    $mail->setFrom('your_email@gmail.com', 'ICPEP Registration');
+    $mail->setFrom($gmailUsername, 'ICPEP Registration');
     $mail->addAddress($email);
 
     $mail->isHTML(true);
