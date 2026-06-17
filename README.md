@@ -36,6 +36,17 @@ This website serves as the digital hub for ICpEP.SE - BulSU, a student organizat
 ## Project Structure
 ICPEP_org_proj_2025/ ├── index.html # Main public website ├── admin_votes.php # Election voting display and results ├── contactme.php # Contact form email handler ├── css/ # Stylesheet directory ├── js/ # JavaScript files ├── images/ # Logo and team photos ├── MEMBERS/ # Member resources directory │ └── tcpdf_min/ # PDF generation library ├── mailing/ # Email functionality ├── login-branch/ # User authentication system ├── FOR ADMIN/ # Administrative resources ├── lib/ # External libraries and dependencies └── vendor/ # Composer dependencies
 
+## Local Email Environment Setup
+
+For OTP email sending (`login-branch/mailing/send_otp.php`), configure these environment variables before running locally:
+
+```
+GMAIL_USERNAME=your_email@gmail.com
+GMAIL_PASSWORD=your_app_password
+```
+
+You can copy `.env.example` to `.env` and set real values in your local environment. `.env` files are ignored by git.
+
 ## **Development Team**
 James Matthew Arias: Back-End Developer
 Jozza Galang : Front-End Developer
