@@ -37,7 +37,7 @@ This website serves as the digital hub for ICpEP.SE - BulSU, a student organizat
 ICPEP_org_proj_2025/ ├── index.html # Main public website ├── admin_votes.php # Election voting display and results ├── contactme.php # Contact form email handler ├── css/ # Stylesheet directory ├── js/ # JavaScript files ├── images/ # Logo and team photos ├── MEMBERS/ # Member resources directory │ └── tcpdf_min/ # PDF generation library ├── mailing/ # Email functionality ├── login-branch/ # User authentication system ├── FOR ADMIN/ # Administrative resources ├── lib/ # External libraries and dependencies └── vendor/ # Composer dependencies
 
 ## **Development Team**
-Matthew James - Back-End Developer
-Jozza Galang - Front-End Developer
-Ronalito Garzon - Back-End Developer
-Josef Alanrey F. Soriente - Front-End Developer
+James Matthew Arias: Back-End Developer
+Jozza Galang : Front-End Developer
+Ronalito Garzon : Back-End Developer
+Josef Alanrey F. Soriente : Front-End Developer
